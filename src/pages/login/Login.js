@@ -1,12 +1,13 @@
 import React from "react";
-import Navbar from "../../component/navbar/Navbar";
+import { Link } from "react-router-dom";
 import './Login.css'
 
 export default function Login() {
     return (
         <div>
-            <Navbar />
+            <Link to={`/`}>back to Home</Link>
             <p>ini Login</p>
+            <Link to={`/dashboard`}>login</Link>
         </div>
     )
 }

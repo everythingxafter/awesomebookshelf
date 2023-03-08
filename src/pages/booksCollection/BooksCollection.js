@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../../component/navbar/Navbar";
-import './Book.css'
+import './BooksCollection.css'
 
-export default function Book() {
+export default function BooksCollection() {
     return (
         <div>
             <Navbar />
-            <p>ini Book</p>
+            <p>ini BooksCollection</p>
         </div>
     )
 }
