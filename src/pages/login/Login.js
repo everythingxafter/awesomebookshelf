@@ -5,11 +5,13 @@ import { Navigate } from "react-router-dom";
 import Logo from "./Logo.png";
 import "./Login.css";
 import Navbar from "../../component/navbar/Navbar";
+import MyAlert from "../../component/alert/MyAlert";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
+  const [seen, setSeen] = useState(false);
 
   const login = async (username, password) => {
     const dataUser = {
@@ -30,16 +32,17 @@ export default function Login() {
         JSON.stringify(dataUser),
         config
       );
-      console.log(res);
+      //console.log(res);
       const token = res.data.access_token;
 
       if (token) {
         setToken(token);
+        setSeen(false);
       } else {
-        setToken("");
+        setSeen(true);
       }
     } catch (error) {
-      setToken("");
+      setSeen(true);
     }
   };
 
@@ -52,17 +55,30 @@ export default function Login() {
     login(username, password);
   };
 
+  const onClose = () => {
+    setSeen(false);
+  };
+
   return (
     <div className="page">
       <Navbar />
-
+      {MyAlert(
+        "Notice",
+        onClose,
+        "Your email or password is wrong! \nPlease try again :)",
+        seen
+      )}
       <div className="container">
         <Image className="logo" src={Logo} alt="Logo" />
-
+        <h3 className="textH3">Welcome</h3>
+        <h4 className="textH4">Read Without Limit</h4>
         <Form onSubmit={(e) => handleSubmit(e)}>
           <Form.Group className="mb-3">
-            <Form.Label className="label">Username</Form.Label>
+            <Form.Label className="label" for="username">
+              Username or Emaiil
+            </Form.Label>
             <Form.Control
+              id="username"
               type="text"
               className="input"
               placeholder="Username"

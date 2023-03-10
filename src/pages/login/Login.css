@@ -16,6 +16,19 @@
     margin: 10px;
 }
 
+.textH3{
+    color: white;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.textH4 {
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
 .input{
     width: 630px;
     height: 65px;
