@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form, Image } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from "./Logo.png";
 import "./Login.css";
 import Navbar from "../../component/navbar/Navbar";
@@ -11,9 +11,10 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
   const [seen, setSeen] = useState(false);
   const [typePassword, setTypePassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const login = async (username, password) => {
     const dataUser = {
@@ -34,11 +35,12 @@ export default function Login() {
         JSON.stringify(dataUser),
         config
       );
-      //console.log(res);
+
       const token = res.data.access_token;
 
       if (token) {
-        setToken(token);
+        localStorage.setItem("access_token", token);
+        navigate("/dashboard");
         setSeen(false);
       } else {
         setSeen(true);
@@ -47,10 +49,6 @@ export default function Login() {
       setSeen(true);
     }
   };
-
-  if (token) {
-    return <Navigate to="/dashboard" replace={true} />;
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();

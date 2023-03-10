@@ -10,6 +10,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import LandingPage from "./pages/landingPage/LandingPage";
 import Login from "./pages/login/Login";
+import ProtectedRoute from "./component/protectedRoute/protectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
   },
 ]);
