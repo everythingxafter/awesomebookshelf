@@ -6,12 +6,14 @@ import Logo from "./Logo.png";
 import "./Login.css";
 import Navbar from "../../component/navbar/Navbar";
 import MyAlert from "../../component/alert/MyAlert";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
   const [seen, setSeen] = useState(false);
+  const [typePassword, setTypePassword] = useState(false);
 
   const login = async (username, password) => {
     const dataUser = {
@@ -59,6 +61,24 @@ export default function Login() {
     setSeen(false);
   };
 
+  const onClick = () => {
+    if (typePassword) {
+      setTypePassword(false);
+    } else if (!typePassword) {
+      setTypePassword(true);
+    }
+  };
+
+  const handleHiddenPassword = (type) => {
+    if (type) {
+      return <AiFillEye className="icon" size={30} onClick={onClick} />;
+    } else if (!type) {
+      return (
+        <AiFillEyeInvisible className="icon" size={30} onClick={onClick} />
+      );
+    }
+  };
+
   return (
     <div className="page">
       <Navbar />
@@ -75,7 +95,7 @@ export default function Login() {
         <Form onSubmit={(e) => handleSubmit(e)}>
           <Form.Group className="mb-3">
             <Form.Label className="label" for="username">
-              Username or Emaiil
+              Username or Email
             </Form.Label>
             <Form.Control
               id="username"
@@ -88,13 +108,16 @@ export default function Login() {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label className="label">Password</Form.Label>
-            <Form.Control
-              className="input"
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
+            <div className="passwordInput">
+              <Form.Control
+                className="input"
+                type={typePassword ? "text" : "password"}
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+              {handleHiddenPassword(typePassword)}
+            </div>
           </Form.Group>
           <div className="buttonContainer">
             <Button className="button" variant="primary" type="submit">
