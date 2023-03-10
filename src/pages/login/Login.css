@@ -1,0 +1,40 @@
+.page {
+    background: linear-gradient(to bottom left,#15202B, #535C66);
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.logo{
+    width: 350px;
+    margin: 10px;
+}
+
+.input{
+    width: 630px;
+    height: 65px;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.button{
+    width: 315px;
+    height: 65px;
+}

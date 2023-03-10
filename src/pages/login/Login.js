@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Form, Image } from "react-bootstrap";
+import { Navigate } from "react-router-dom";
+import Logo from "./Logo.png";
 import "./Login.css";
+import Navbar from "../../component/navbar/Navbar";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
 
   const login = async (username, password) => {
     const dataUser = {
@@ -31,16 +34,18 @@ export default function Login() {
       const token = res.data.access_token;
 
       if (token) {
-        //Navigate()
-        alert(`Berhasil Login, ${token}`);
+        setToken(token);
       } else {
-        alert("gagal");
+        setToken("");
       }
     } catch (error) {
-      console.log(error);
-      //alert(error);
+      setToken("");
     }
   };
+
+  if (token) {
+    return <Navigate to="/dashboard" replace={true} />;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,43 +53,39 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <Link to={`/`}>back to Home</Link>
-      <Link to={`/dashboard`}>login</Link>
+    <div className="page">
+      <Navbar />
 
-      <div className="page">
-        <div className="logo">
-          <img src="" alt="" />
-        </div>
-        <div className="form">
-          <Form onSubmit={(e) => handleSubmit(e)}>
-            <div className="usernameContainer">
-              <Form.Group className="mb-3">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  onChange={(e) => setUsername(e.target.value)}
-                  value={username}
-                />
-              </Form.Group>
-            </div>
-            <div className="passwordContainer">
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                />
-              </Form.Group>
-            </div>
-            <Button variant="primary" type="submit">
-              Submit
+      <div className="container">
+        <Image className="logo" src={Logo} alt="Logo" />
+
+        <Form onSubmit={(e) => handleSubmit(e)}>
+          <Form.Group className="mb-3">
+            <Form.Label className="label">Username</Form.Label>
+            <Form.Control
+              type="text"
+              className="input"
+              placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label className="label">Password</Form.Label>
+            <Form.Control
+              className="input"
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+          </Form.Group>
+          <div className="buttonContainer">
+            <Button className="button" variant="primary" type="submit">
+              Log In
             </Button>
-          </Form>
-        </div>
+          </div>
+        </Form>
       </div>
     </div>
   );
