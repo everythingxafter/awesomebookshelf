@@ -11,6 +11,7 @@ import ErrorPage from "./pages/errorPage/ErrorPage";
 import LandingPage from "./pages/landingPage/LandingPage";
 import Login from "./pages/login/Login";
 import ProtectedRoute from "./component/protectedRoute/protectedRoute";
+import CreateBook from "./pages/book/createBook/CreateBook";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,15 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Dashboard />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/createbook",
+    element: (
+      <ProtectedRoute>
+        <CreateBook />
       </ProtectedRoute>
     ),
     errorElement: <ErrorPage />,

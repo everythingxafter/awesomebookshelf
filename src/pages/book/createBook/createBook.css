@@ -1,0 +1,47 @@
+.createBook-page{
+    height: max-content;
+    background-color: #38444D;
+    display: flex;
+}
+
+.createBook-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.createBook-containerLeft{
+    flex:50%;
+    padding: 10px;
+}
+
+.createBook-containerRight{
+    flex:50%;
+    padding: 10px;
+}
+
+.createBook-input{
+    width: 400px;
+    color: white;
+}
+
+.createBook-label{
+    color: white;
+    font-size: 25px;
+}
+
+
+.createBook-inputTextArea{
+    width: 400px;
+    color: white;
+}
+
+
+.createBook-button{
+    width: 163px;
+}
+
+.createBook-buttonContainer{
+    display: flex;
+    align-items: end;
+    padding: 10px;
+}
