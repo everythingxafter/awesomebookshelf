@@ -62,3 +62,63 @@
     width: 315px;
     height: 65px;
 }
+
+@media (max-width: 700px) {
+    .logo{
+        width: 250px;
+        margin: 10px;
+    }
+    
+    .textH3{
+        color: white;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    
+    .textH4 {
+        color: white;
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 40px;
+    }
+    
+    .input{
+        width: 315px;
+        height: 60px;
+    }
+
+    .button {
+        width: 158px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 350px){
+    .logo{
+        width: 150px;
+        margin: 10px;
+    }
+    
+    .textH3{
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .textH4 {
+        color: white;
+        font-size: 10px;
+        font-weight: 400;
+        margin-bottom: 40px;
+    }
+    
+    .input{
+        width: 158px;
+        height: 45px;
+    }
+
+    .button {
+        width: 80px;
+        height: 45px;
+    }
+}
