@@ -1,34 +1,53 @@
 .createBook-page{
-    height: max-content;
-    background-color: #38444D;
-    display: flex;
+    background-color: #15202B;
+    height: 100vh;
+}
+
+.createBook-text {
+    color: white;
+    margin-top: 33px;
+    margin-left: 25px;
+    font-size: 40px;
 }
 
 .createBook-container{
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 24px;
 }
 
-.createBook-containerLeft{
+.createBook-containerColumn{
     flex:50%;
-    padding: 10px;
+    padding-left: 30px;
+    padding-right: 20px;
 }
 
-.createBook-containerRight{
-    flex:50%;
-    padding: 10px;
+.createBook-upper{
+    margin-top: -30px;
+}
+
+.createBook-center{
+    display: flex;
+    align-items: center;
 }
 
 .createBook-input{
     width: 400px;
     color: white;
+    margin-left: 10px;;
 }
 
 .createBook-label{
     color: white;
     font-size: 25px;
+    flex: 50%;
 }
 
+.createBook-row {
+    display: flex;
+    flex-direction: row;
+}
 
 .createBook-inputTextArea{
     width: 400px;
@@ -42,6 +61,58 @@
 
 .createBook-buttonContainer{
     display: flex;
-    align-items: end;
+    justify-content: flex-end;
     padding: 10px;
+}
+
+@media (max-width: 700px){
+    .createBook-inputTextArea{
+        width: 250px;
+        color: white;
+        margin-left: 10px;
+    }
+    
+    .createBook-input{
+        width: 250px;
+        color: white;
+    }
+    
+    .createBook-label{
+        color: white;
+        font-size: 16px;
+        flex: 50%;
+    }
+    
+    .createBook-button{
+        width: 84px;
+    }
+
+    .createBook-text {
+        color: white;
+        margin-top: 33px;
+        margin-left: 25px;
+        font-size: 20px;
+    }
+
+    .createBook-containerColumn{
+        padding-left: 30px;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .createBook-container{
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+    }
+
+    .createBook-row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+@media (max-width: 350px){
+    
 }

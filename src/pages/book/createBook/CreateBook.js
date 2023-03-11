@@ -68,11 +68,11 @@ export default function CreateBook() {
         alert
       )}
       <div>
-        <h1>Create data</h1>
+        <h1 className="createBook-text">Create data</h1>
 
         <Form className="createBook-container" onSubmit={(e) => submitBook(e)}>
-          <div className="createBook-containerLeft">
-            <Form.Group className="mb-3">
+          <div className="createBook-containerColumn">
+            <Form.Group className="mb-3 createBook-row">
               <Form.Label className="createBook-label" for="bookName">
                 Book Name
               </Form.Label>
@@ -84,7 +84,7 @@ export default function CreateBook() {
                 onChange={(e) => setBookName(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 createBook-row">
               <Form.Label className="createBook-label" for="genre">
                 Genre
               </Form.Label>
@@ -96,21 +96,28 @@ export default function CreateBook() {
                 onChange={(e) => setGenre(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label className="createBook-label" for="sinopsis">
+            <Form.Group
+              className="mb-3 createBook-row"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label
+                className="createBook-label createBook-center"
+                for="sinopsis"
+              >
                 Sinopsis
               </Form.Label>
               <Form.Control
                 id="sinopsis"
-                type="textarea"
+                as="textarea"
                 className="createBook-inputTextArea"
+                rows={5}
                 value={sinopsis}
                 onChange={(e) => setSinopsis(e.target.value)}
               />
             </Form.Group>
           </div>
-          <div className="containerRight">
-            <Form.Group className="mb-3">
+          <div className="createBook-containerColumn createBook-upper">
+            <Form.Group className="mb-3 createBook-row">
               <Form.Label className="createBook-label" for="imageUrl">
                 Image URL
               </Form.Label>
@@ -122,7 +129,7 @@ export default function CreateBook() {
                 onChange={(e) => setImageUrl(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 createBook-row">
               <Form.Label className="createBook-label" for="author">
                 Author
               </Form.Label>
@@ -134,7 +141,7 @@ export default function CreateBook() {
                 onChange={(e) => setAuthor(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 createBook-row">
               <Form.Label className="createBook-label" for="bookRelease">
                 Book Release
               </Form.Label>
