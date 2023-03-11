@@ -69,10 +69,14 @@ export default function Login() {
 
   const handleHiddenPassword = (type) => {
     if (type) {
-      return <AiFillEye className="icon" size={30} onClick={onClick} />;
+      return <AiFillEye className="login-icon" size={30} onClick={onClick} />;
     } else if (!type) {
       return (
-        <AiFillEyeInvisible className="icon" size={30} onClick={onClick} />
+        <AiFillEyeInvisible
+          className="login-icon"
+          size={30}
+          onClick={onClick}
+        />
       );
     }
   };
@@ -86,29 +90,29 @@ export default function Login() {
         "Your email or password is wrong! \n\nPlease try again :)",
         alert
       )}
-      <div className="container">
-        <Image className="logo" src={Logo} alt="Logo" />
-        <h3 className="textH3">Welcome</h3>
-        <h4 className="textH4">Read Without Limit</h4>
+      <div className="login-container">
+        <Image className="login-logo" src={Logo} alt="Logo" />
+        <h3 className="login-textH3">Welcome</h3>
+        <h4 className="login-textH4">Read Without Limit</h4>
         <Form onSubmit={(e) => handleSubmit(e)}>
           <Form.Group className="mb-3">
-            <Form.Label className="label" for="username">
+            <Form.Label className="login-label" for="username">
               Username or Email
             </Form.Label>
             <Form.Control
               id="username"
               type="text"
-              className="input"
+              className="login-input"
               placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
               value={username}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label className="label">Password</Form.Label>
-            <div className="passwordInput">
+            <Form.Label className="login-label">Password</Form.Label>
+            <div className="login-passwordInput">
               <Form.Control
-                className="input"
+                className="login-input"
                 type={typePassword ? "text" : "password"}
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
@@ -117,8 +121,8 @@ export default function Login() {
               {handleHiddenPassword(typePassword)}
             </div>
           </Form.Group>
-          <div className="buttonContainer">
-            <Button className="button" variant="primary" type="submit">
+          <div className="login-buttonContainer">
+            <Button className="login-button" variant="primary" type="submit">
               Log In
             </Button>
           </div>
