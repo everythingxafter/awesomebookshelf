@@ -11,7 +11,7 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [seen, setSeen] = useState(false);
+  const [alert, setAlert] = useState(false);
   const [typePassword, setTypePassword] = useState(false);
 
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ export default function Login() {
 
     try {
       const res = await axios.post(
-        "//localhost:3000/login",
+        "//localhost:8080/login",
         JSON.stringify(dataUser),
         config
       );
@@ -41,12 +41,12 @@ export default function Login() {
       if (token) {
         localStorage.setItem("access_token", token);
         navigate("/dashboard");
-        setSeen(false);
+        setAlert(false);
       } else {
-        setSeen(true);
+        setAlert(true);
       }
     } catch (error) {
-      setSeen(true);
+      setAlert(true);
     }
   };
 
@@ -56,7 +56,7 @@ export default function Login() {
   };
 
   const onClose = () => {
-    setSeen(false);
+    setAlert(false);
   };
 
   const onClick = () => {
@@ -83,8 +83,8 @@ export default function Login() {
       {MyAlert(
         "Notice",
         onClose,
-        "Your email or password is wrong! \nPlease try again :)",
-        seen
+        "Your email or password is wrong! \n\nPlease try again :)",
+        alert
       )}
       <div className="container">
         <Image className="logo" src={Logo} alt="Logo" />
