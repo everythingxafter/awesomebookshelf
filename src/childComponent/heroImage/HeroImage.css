@@ -1,0 +1,125 @@
+.landing-ibook__hero-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 5rem;
+}
+
+.the-card {
+    aspect-ratio: 5/7;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    position: absolute;
+    transition: transform 800ms cubic-bezier(.05, .43, .25, .95);
+    background-size: cover;
+    box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.77);
+    -webkit-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.77);
+    -moz-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.77);
+
+
+}
+
+.big-card {
+    width: 40vmin;
+
+}
+
+.little-card {
+    width: 24vmin;
+    border-radius: 2vmin;
+    /* left: 50%; */
+    /* top: 50%; */
+    /* transform: translate(-50%, -50%); */
+}
+
+.big-card:nth-child(2) {
+    transform: translateX(-10%) rotate(-1deg);
+    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/423faa82852617.5d2b2440617a8.jpg");
+}
+
+
+.big-card:nth-child(4) {
+    transform: rotate(2deg);
+    background-image: url("https://i.redd.it/bis7nncni9m61.png");
+}
+
+
+.big-card:nth-child(6) {
+    transform: translateX(-6%) rotate(-3deg);
+    background-image: url("https://img.freepik.com/free-vector/abstract-elegant-winter-book-cover_23-2148798745.jpg");
+}
+
+
+.big-card:nth-child(8) {
+    transform: translateX(-10%, 3%) rotate(5deg);
+    background-image: url("https://slicesofbluesky.com/wp-content/uploads/2017/01/Dark-Dashwood-the-Desperate-or-the-Child-of-the-Sun.jpg");
+}
+
+.landing-ibook__hero-image-container:hover>.big-card:nth-child(2) {
+    transform: translate(-75%, 16%) rotate(-24deg);
+
+}
+
+.landing-ibook__hero-image-container:hover>.big-card:nth-child(4) {
+    transform: translate(-25%, 8%) rotate(-8deg);
+
+}
+
+.landing-ibook__hero-image-container:hover>.big-card:nth-child(6) {
+    transform: translate(25%, 8%) rotate(8deg);
+
+}
+
+.landing-ibook__hero-image-container:hover>.big-card:nth-child(8) {
+    transform: translate(75%, 16%) rotate(24deg);
+}
+
+.landing-ibook__hero-image-container>.little-card:nth-child(1) {
+
+    background-image: url("https://media.graphassets.com/87pemVNSYiVQZWy4uJ9c");
+}
+
+.landing-ibook__hero-image-container>.little-card:nth-child(3) {
+
+    background-image: url("https://media.graphassets.com/WkGewTfTd6tYZUxfzUuO");
+}
+
+.landing-ibook__hero-image-container>.little-card:nth-child(5) {
+
+    background-image: url("https://media.graphassets.com/WkGewTfTd6tYZUxfzUuO");
+}
+
+.landing-ibook__hero-image-container>.little-card:nth-child(7) {
+
+    background-image: url("https://cg3.cgsociety.org/uploads/images/medium/nagual-the-cycle-of-the-red-1-5b992a08-pkim.jpg");
+}
+
+.landing-ibook__hero-image-container:hover>.little-card:nth-child(1) {
+    transform: translate(100%, -70%) rotate(-15deg);
+
+}
+
+.landing-ibook__hero-image-container:hover>.little-card:nth-child(3) {
+    transform: translate(100%, 70%) rotate(15deg);
+
+}
+
+.landing-ibook__hero-image-container:hover>.little-card:nth-child(5) {
+    transform: translate(-100%, -70%) rotate(15deg);
+
+}
+
+.landing-ibook__hero-image-container:hover>.little-card:nth-child(7) {
+    transform: translate(-100%, 70%) rotate(-15deg);
+
+}
+
+
+
+@media(max-width: 800px) {
+    .landing-ibook__hero-image-container {
+        display: none;
+    }
+}

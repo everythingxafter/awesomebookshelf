@@ -1,0 +1,84 @@
+.landing-ibook__hero {
+    color: #fff;
+    width: auto;
+    padding: 48px;
+    position: relative;
+    min-height: 80vh;
+    align-items: center;
+    background-image: linear-gradient(0deg, #15202B, #15202B);
+}
+
+.landing-ibook__hero-container {
+    gap: 45px;
+    z-index: 1;
+    margin-top: 5em;
+    margin-right: 48px;
+    padding-right: 48px;
+    position: sticky;
+}
+
+.landing-ibook__hero-heading {
+    font-size: 4rem;
+    /* max-width: 430px; */
+    line-height: 6rem;
+}
+
+.landing-ibook__btn-group {
+    align-items: center;
+    gap: 10px;
+}
+
+.landing-ibook__button {
+    color: #fff;
+    width: auto;
+    background: #108ADC;
+    transition: 0.3s;
+    border-radius: 10px;
+    padding: 16px 32px;
+}
+
+.landing-ibook__button:hover {
+    color: #fff;
+    background-color: #15202B;
+}
+
+
+
+.landing-ibook__wave-image {
+    right: 0px;
+    width: 100%;
+    bottom: 0;
+    z-index: 0;
+    position: absolute;
+    object-fit: cover;
+}
+
+/* @media(max-width: 991px) {
+    .landing-ibook-hero {
+        flex-direction: column;
+    }
+
+    .landing-ibook__hero-container {
+        align-items: center;
+        margin-bottom: 32px;
+    }
+
+    .landing-ibook__hero-heading {
+        text-align: center;
+    }
+}
+
+@media(max-width: 991px) {
+    .landing-ibook__hero {
+        flex-direction: column;
+    }
+
+    .landing-ibook__hero-container {
+        align-items: center;
+        margin-bottom: 32px;
+    }
+
+    .landing-ibook__hero-heading {
+        text-align: center;
+    }
+} */
