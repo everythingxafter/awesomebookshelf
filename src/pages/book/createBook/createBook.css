@@ -34,7 +34,7 @@
 
 .createBook-input{
     width: 400px;
-    color: white;
+    color: #15202B;
     margin-left: 10px;;
 }
 
@@ -51,7 +51,7 @@
 
 .createBook-inputTextArea{
     width: 400px;
-    color: white;
+    color: #15202B;
 }
 
 
@@ -68,13 +68,13 @@
 @media (max-width: 700px){
     .createBook-inputTextArea{
         width: 280px;
-        color: white;
+        color: #15202B;
         margin-left: 10px;
     }
     
     .createBook-input{
         width: 280px;
-        color: white;
+        color: #15202B;
     }
     
     .createBook-label{
@@ -116,13 +116,13 @@
 @media (max-width: 350px){
     .createBook-inputTextArea{
         width: 190px;
-        color: white;
+        color: #15202B;
         margin-left: 10px;
     }
     
     .createBook-input{
         width: 190px;
-        color: white;
+        color: #15202B;
     }
     
     .createBook-label{
