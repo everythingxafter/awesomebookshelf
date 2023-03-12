@@ -67,13 +67,13 @@
 
 @media (max-width: 700px){
     .createBook-inputTextArea{
-        width: 250px;
+        width: 280px;
         color: white;
         margin-left: 10px;
     }
     
     .createBook-input{
-        width: 250px;
+        width: 280px;
         color: white;
     }
     
@@ -114,5 +114,49 @@
 }
 
 @media (max-width: 350px){
+    .createBook-inputTextArea{
+        width: 190px;
+        color: white;
+        margin-left: 10px;
+    }
+    
+    .createBook-input{
+        width: 190px;
+        color: white;
+    }
+    
+    .createBook-label{
+        color: white;
+        font-size: 14px;
+        flex: 50%;
+    }
+    
+    .createBook-button{
+        width: 65px;
+    }
+
+    .createBook-text {
+        color: white;
+        margin-top: 33px;
+        margin-left: 25px;
+        font-size: 15px;
+    }
+
+    .createBook-containerColumn{
+        padding-left: 30px;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .createBook-container{
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+    }
+
+    .createBook-row {
+        display: flex;
+        flex-direction: column;
+    }
     
 }
