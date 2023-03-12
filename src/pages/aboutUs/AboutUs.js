@@ -1,11 +1,11 @@
 import React from "react";
-import Navbar from "../../component/navbar/Navbar";
+import NavbarHome from "../../component/navbar/NavbarHome";
 import './AboutUs.css'
 
 export default function AboutUs() {
     return (
         <div>
-            <Navbar />
+            <NavbarHome />
             <p>ini About Us</p>
         </div>
     )

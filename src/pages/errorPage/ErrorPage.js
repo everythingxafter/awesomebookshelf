@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
-import Navbar from "../../component/navbar/Navbar";
+import NavbarHome from "../../component/navbar/NavbarHome";
 import './ErrorPage.css'
 
 export default function ErrorPage() {
@@ -9,7 +9,7 @@ export default function ErrorPage() {
 
     return (
         <div>
-            <Navbar />
+            <NavbarHome />
             <p>ini Error Page</p>
             <p>Kamu tersesat, silahkan kembali ke home</p>
             <i>{error.statusText || error.message}</i>

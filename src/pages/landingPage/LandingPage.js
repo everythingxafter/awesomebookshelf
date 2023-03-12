@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../../component/navbar/Navbar";
+import NavbarHome from "../../component/navbar/NavbarHome";
 import './LandingPage.css'
 
 export default function LandingPage() {
     return (
         <div>
-            <Navbar />
+            <NavbarHome />
             <p>ini LandingPage</p>
             <Link to={`/bookscollection`}>Baca</Link>
             <br></br>
