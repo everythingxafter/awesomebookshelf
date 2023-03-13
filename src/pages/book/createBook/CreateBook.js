@@ -16,7 +16,6 @@ export default function CreateBook() {
   const [bookRelease, setBookRelease] = useState("");
   const [stories, setStories] = useState("");
   const [message, setMessage] = useState("");
-  // const fileName = file.split("\\");
 
   const dataBook = new FormData();
   dataBook.append("title", bookName);

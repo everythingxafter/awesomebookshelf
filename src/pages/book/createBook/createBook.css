@@ -69,16 +69,92 @@
     padding: 10px;
 }
 
-@media (max-width: 700px){
+@media (max-width: 850px){
+    .createBook-page{
+        height: max-content;
+    }
+
     .createBook-inputTextArea{
-        width: 280px;
+        width: 450px;
         color: #15202B;
         margin-left: 10px;
     }
     
     .createBook-input{
-        width: 280px;
+        width: 450px;
         color: #15202B;
+    }
+
+    .createBook-inputFile{
+        height: 40px;
+        width: 450px;
+        margin-left: 10px;
+    }
+
+    .createBook-upper{
+        align-self: center;
+    }
+    
+    .createBook-label{
+        color: white;
+        font-size: 16px;
+        flex: 50%;
+    }
+    
+    .createBook-button{
+        width: 84px;
+    }
+
+    .createBook-text {
+        color: white;
+        margin-top: 33px;
+        margin-left: 25px;
+        font-size: 23px;
+    }
+
+    .createBook-containerColumn{
+        padding-left: 30px;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .createBook-container{
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+    }
+
+    .createBook-row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+@media (max-width: 500px){
+    .createBook-page{
+        height: max-content;
+    }
+
+    .createBook-inputTextArea{
+        width: 350px;
+        color: #15202B;
+        margin-left: 10px;
+    }
+    
+    .createBook-input{
+        width: 350px;
+        color: #15202B;
+    }
+
+    .createBook-inputFile{
+        height: 40px;
+        width: 350px;
+        margin-left: 10px;
+    }
+
+    .createBook-upper{
+        align-self: center;
     }
     
     .createBook-label{
@@ -134,9 +210,14 @@
         font-size: 14px;
         flex: 50%;
     }
+
+    .createBook-inputFile{
+        width: 190px;
+        margin-left: 10px;
+    }
     
     .createBook-button{
-        width: 65px;
+        width: 80px;
     }
 
     .createBook-text {
