@@ -32,7 +32,7 @@ export default function UpdateBook() {
   const config = {
     headers: {
       "Content-Type": "multipart/form-data",
-      access_token: access_token,
+      access_token,
     },
   };
 
@@ -46,13 +46,23 @@ export default function UpdateBook() {
         config
       );
 
+      //const res = await fetch(`//localhost:5000/content/update/${id}`, {
+      // method: "PUT",
+      // headers: {
+      // accept: "body",
+      //"Content-Type": "multipart/form-data",
+      // access_token,
+      // },
+      // body: dataBookUpdated,
+      // });
+
       const message = res.data.message;
       setAlert(true);
       setMessage(message);
       console.log(message, "message put");
     } catch (error) {
       setAlert(true);
-      console.log(error.response);
+      console.log(error);
     }
   };
 
