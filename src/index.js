@@ -50,7 +50,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/updatebook",
-    element: <UpdateBook />,
+    element: (
+      <ProtectedRoute>
+        <UpdateBook />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
   },
 ]);
