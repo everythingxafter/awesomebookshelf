@@ -18,23 +18,21 @@ export default function CreateBook() {
   const [message, setMessage] = useState("");
   // const fileName = file.split("\\");
 
-  const dataBook = {
-    title: bookName,
-    file,
-    sinopsis,
-    stories,
-    genres: sinopsis,
-    releaseDate: bookRelease,
-  };
+  const dataBook = new FormData();
+  dataBook.append("title", bookName);
+  dataBook.append("file", file);
+  dataBook.append("sinopsis", sinopsis);
+  dataBook.append("stories", stories);
+  dataBook.append("genres", genre);
+  dataBook.append("releaseDate", bookRelease);
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
+      "Content-Type": "multipart/from-data",
       access_token: access_token,
     },
   };
-  console.log(file);
+  console.log(dataBook);
   const sendData = async (data) => {
     try {
       const res = await axios.post(
