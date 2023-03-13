@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useLocation } from "react-router";
+import { useLocation, useParams } from "react-router";
 import MyAlert from "../../../component/alert/MyAlert";
 import Navbar from "../../../component/navbar/Navbar";
 import "./UpdateBook.css";
@@ -9,15 +9,16 @@ import "./UpdateBook.css";
 export default function UpdateBook() {
   const access_token = localStorage.getItem("access_token");
   const { state } = useLocation();
-  const { id, preliminaryData } = state;
+  const { preliminaryData } = state;
+  const { id } = useParams();
   const [alert, setAlert] = useState(false);
-  const [bookName, setBookName] = useState(preliminaryData?.title);
-  const [genre, setGenre] = useState(preliminaryData?.genres);
-  const [file, setFile] = useState(preliminaryData?.file);
+  const [bookName, setBookName] = useState(preliminaryData?.Title);
+  const [genre, setGenre] = useState(preliminaryData?.Genres);
+  const [file, setFile] = useState({});
   const [fileName, setFileName] = useState("");
-  const [sinopsis, setSinopsis] = useState(preliminaryData?.sinopsis);
-  const [bookRelease, setBookRelease] = useState(preliminaryData?.releaseDate);
-  const [stories, setStories] = useState(preliminaryData?.stories);
+  const [sinopsis, setSinopsis] = useState(preliminaryData?.Sinopsis);
+  const [bookRelease, setBookRelease] = useState(preliminaryData?.ReleaseDate);
+  const [stories, setStories] = useState(preliminaryData?.Stories);
   const [message, setMessage] = useState("");
 
   const dataBookUpdated = new FormData();
@@ -35,11 +36,10 @@ export default function UpdateBook() {
     },
   };
 
-  console.log(preliminaryData, "data");
   const updateData = async (data) => {
     try {
       const res = await axios.put(
-        `//localhost:5000/content/update/${id}`,
+        `http://localhost:5000/content/update/${id}`,
         data,
         config
       );
@@ -76,20 +76,26 @@ export default function UpdateBook() {
         <h1 className="updateBook-text">Update Data</h1>
 
         <Form className="updateBook-container" onSubmit={(e) => submitBook(e)}>
-          <div className="updateBook-containerColumn">
-            <Form.Group className="mb-3 updateBook-row">
+          <div className="updateBook-containerColumn updateBook-upper">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="updateBook-label" for="bookName">
                 Book Name
               </Form.Label>
               <Form.Control
                 id="bookName"
                 type="text"
-                className="updateBook-input"
+                className="updateBook-inputFile"
                 value={bookName}
                 onChange={(e) => setBookName(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3 updateBook-row">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="updateBook-label" for="genre">
                 Genre
               </Form.Label>
@@ -121,8 +127,8 @@ export default function UpdateBook() {
               />
             </Form.Group>
           </div>
-          <div className="updateBook-containerColumn updateBook-upper">
-            <Form.Group className="mb-3 updateBook-row">
+          <div className="updateBook-containerColumn ">
+            <Form.Group className="mb-3 updateBook-row" controlId="formFile">
               <Form.Label className="updateBook-label" for="file">
                 Image URL
               </Form.Label>
@@ -138,7 +144,10 @@ export default function UpdateBook() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3 updateBook-row">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="updateBook-label" for="bookRelease">
                 Book Release
               </Form.Label>
@@ -159,8 +168,9 @@ export default function UpdateBook() {
               </Form.Label>
               <Form.Control
                 id="stories"
-                type="textarea"
+                as="textarea"
                 className="updateBook-input"
+                rows={10}
                 value={stories}
                 onChange={(e) => setStories(e.target.value)}
               />

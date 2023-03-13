@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/updatebook",
+    path: "/updatebook/:id",
     element: (
       <ProtectedRoute>
         <UpdateBook />

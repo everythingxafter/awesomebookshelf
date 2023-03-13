@@ -24,7 +24,7 @@
 }
 
 .updateBook-upper{
-    margin-top: -30px;
+    align-self: flex-start;
 }
 
 .updateBook-center{
@@ -33,7 +33,7 @@
 }
 
 .updateBook-input{
-    width: 400px;
+    width: 550px;
     color: #15202B;
     margin-left: 10px;;
 }
@@ -50,10 +50,14 @@
 }
 
 .updateBook-inputTextArea{
-    width: 400px;
+    width: 550px;
     color: #15202B;
 }
 
+.updateBook-inputFile{
+    width: 550px;
+    height: 40px;
+}
 
 .updateBook-button{
     width: 163px;
