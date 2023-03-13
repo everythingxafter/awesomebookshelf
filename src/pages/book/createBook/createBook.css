@@ -24,7 +24,7 @@
 }
 
 .createBook-upper{
-    margin-top: -30px;
+    align-self: flex-start;
 }
 
 .createBook-center{
@@ -33,9 +33,9 @@
 }
 
 .createBook-input{
-    width: 400px;
+    width: 550px;
     color: #15202B;
-    margin-left: 10px;;
+    margin-left: 10px;
 }
 
 .createBook-label{
@@ -50,10 +50,14 @@
 }
 
 .createBook-inputTextArea{
-    width: 400px;
+    width: 550px;
     color: #15202B;
 }
 
+.createBook-inputFile{
+    width: 550px;
+    height: 40px
+}
 
 .createBook-button{
     width: 163px;

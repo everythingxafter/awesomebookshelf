@@ -72,25 +72,33 @@ export default function CreateBook() {
         <h1 className="createBook-text">Create data</h1>
 
         <Form className="createBook-container" onSubmit={(e) => submitBook(e)}>
-          <div className="createBook-containerColumn">
-            <Form.Group className="mb-3 createBook-row">
+          <div className="createBook-containerColumn createBook-upper">
+            <Form.Group
+              className="mb-3 createBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="createBook-label" for="bookName">
                 Book Name
               </Form.Label>
               <Form.Control
                 id="bookName"
+                placeholder="Write your book name"
                 type="text"
                 className="createBook-input"
                 value={bookName}
                 onChange={(e) => setBookName(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3 createBook-row">
+            <Form.Group
+              className="mb-3 createBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="createBook-label" for="genre">
                 Genre
               </Form.Label>
               <Form.Control
                 id="genre"
+                placeholder="Write your book genres"
                 type="text"
                 className="createBook-input"
                 value={genre}
@@ -109,6 +117,7 @@ export default function CreateBook() {
               </Form.Label>
               <Form.Control
                 id="sinopsis"
+                placeholder="Write your book sinopsis"
                 as="textarea"
                 className="createBook-inputTextArea"
                 rows={5}
@@ -117,7 +126,7 @@ export default function CreateBook() {
               />
             </Form.Group>
           </div>
-          <div className="createBook-containerColumn createBook-upper">
+          <div className="createBook-containerColumn">
             <Form.Group className="mb-3 createBook-row" controlId="formFile">
               <Form.Label className="createBook-label" for="image">
                 Image
@@ -125,7 +134,7 @@ export default function CreateBook() {
               <Form.Control
                 id="image"
                 type="file"
-                className="createBook-input"
+                className="createBook-inputFile"
                 value={fileName}
                 onChange={(e) => {
                   setFileName(e.target.value);
@@ -133,25 +142,33 @@ export default function CreateBook() {
                 }}
               />
             </Form.Group>
-            <Form.Group className="mb-3 createBook-row">
+            <Form.Group
+              className="mb-3 createBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="createBook-label" for="bookRelease">
                 Book Release
               </Form.Label>
               <Form.Control
                 id="bookRelease"
                 type="text"
+                placeholder="Write your book is released"
                 className="createBook-input"
                 value={bookRelease}
                 onChange={(e) => setBookRelease(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3 createBook-row">
+            <Form.Group
+              className="mb-3 createBook-row"
+              controlId="exampleForm.ControlTextarea1"
+            >
               <Form.Label className="createBook-label" for="stories">
                 Stories
               </Form.Label>
               <Form.Control
                 id="stories"
-                type="textarea"
+                as="textarea"
+                placeholder="Write your book stories"
                 className="createBook-inputTextArea"
                 value={stories}
                 rows={10}
