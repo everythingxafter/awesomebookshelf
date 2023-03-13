@@ -10,19 +10,21 @@ export default function CreateBook() {
   const [alert, setAlert] = useState(false);
   const [bookName, setBookName] = useState("");
   const [genre, setGenre] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [file, setFile] = useState({});
+  const [fileName, setFileName] = useState("");
   const [sinopsis, setSinopsis] = useState("");
   const [bookRelease, setBookRelease] = useState("");
-  const [author, setAuthor] = useState("");
+  const [stories, setStories] = useState("");
   const [message, setMessage] = useState("");
+  // const fileName = file.split("\\");
 
   const dataBook = {
-    name: bookName,
-    image: imageUrl,
-    description1: genre,
-    description2: sinopsis,
-    description3: bookRelease,
-    description4: author,
+    title: bookName,
+    file,
+    sinopsis,
+    stories,
+    genres: sinopsis,
+    releaseDate: bookRelease,
   };
 
   const config = {
@@ -32,11 +34,11 @@ export default function CreateBook() {
       access_token: access_token,
     },
   };
-
+  console.log(file);
   const sendData = async (data) => {
     try {
       const res = await axios.post(
-        "//localhost:8080/content/create",
+        "//localhost:5000/content/create",
         data,
         config
       );
@@ -46,6 +48,7 @@ export default function CreateBook() {
       setMessage(message);
     } catch (error) {
       setAlert(true);
+      console.log(error);
     }
   };
 
@@ -117,28 +120,19 @@ export default function CreateBook() {
             </Form.Group>
           </div>
           <div className="createBook-containerColumn createBook-upper">
-            <Form.Group className="mb-3 createBook-row">
-              <Form.Label className="createBook-label" for="imageUrl">
-                Image URL
+            <Form.Group className="mb-3 createBook-row" controlId="formFile">
+              <Form.Label className="createBook-label" for="image">
+                Image
               </Form.Label>
               <Form.Control
-                id="imageUrl"
-                type="text"
+                id="image"
+                type="file"
                 className="createBook-input"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3 createBook-row">
-              <Form.Label className="createBook-label" for="author">
-                Author
-              </Form.Label>
-              <Form.Control
-                id="author"
-                type="text"
-                className="createBook-input"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
+                value={fileName}
+                onChange={(e) => {
+                  setFileName(e.target.value);
+                  setFile(e.target.files[0]);
+                }}
               />
             </Form.Group>
             <Form.Group className="mb-3 createBook-row">
@@ -151,6 +145,19 @@ export default function CreateBook() {
                 className="createBook-input"
                 value={bookRelease}
                 onChange={(e) => setBookRelease(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3 createBook-row">
+              <Form.Label className="createBook-label" for="stories">
+                Stories
+              </Form.Label>
+              <Form.Control
+                id="stories"
+                type="textarea"
+                className="createBook-inputTextArea"
+                value={stories}
+                rows={10}
+                onChange={(e) => setStories(e.target.value)}
               />
             </Form.Group>
             <div className="createBook-buttonContainer">
