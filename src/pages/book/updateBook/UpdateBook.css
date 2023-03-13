@@ -69,16 +69,22 @@
     padding: 10px;
 }
 
-@media (max-width: 700px){
+@media (max-width: 850px){
+    .updateBook-page{
+        height: max-content;
+    }
+
     .updateBook-inputTextArea{
-        width: 280px;
         color: #15202B;
         margin-left: 10px;
     }
     
     .updateBook-input{
-        width: 280px;
         color: #15202B;
+    }
+
+    .updateBook-inputFile{
+        height: 40px;
     }
     
     .updateBook-label{
@@ -114,10 +120,78 @@
         display: flex;
         flex-direction: column;
     }
+
+    .updateBook-upper{
+        align-self: center;
+    }
+    
+}
+
+@media (max-width: 600px){
+    .updateBook-page{
+        height: max-content;
+    }
+
+    .updateBook-inputTextArea{
+        width: 300px;
+        color: #15202B;
+        margin-left: 10px;
+    }
+    
+    .updateBook-input{
+        width: 300px;
+        color: #15202B;
+    }
+
+    .updateBook-inputFile{
+        width: 300px;
+        height: 40px;
+    }
+    
+    .updateBook-label{
+        color: white;
+        font-size: 16px;
+        flex: 50%;
+    }
+    
+    .updateBook-button{
+        width: 84px;
+    }
+
+    .updateBook-text {
+        color: white;
+        margin-top: 33px;
+        margin-left: 25px;
+        font-size: 20px;
+    }
+
+    .updateBook-containerColumn{
+        padding-left: 30px;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .updateBook-container{
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+    }
+
+    .updateBook-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .updateBook-upper{
+        align-self: center;
+    }
     
 }
 
 @media (max-width: 350px){
+    .updateBook-page{
+        height: max-content;
+    }
     .updateBook-inputTextArea{
         width: 190px;
         color: #15202B;
@@ -128,6 +202,11 @@
         width: 190px;
         color: #15202B;
     }
+
+    .updateBook-inputFile{
+        width: 190px;
+        height: 40px;
+    }
     
     .updateBook-label{
         color: white;
@@ -136,7 +215,7 @@
     }
     
     .updateBook-button{
-        width: 65px;
+        width: 80px;
     }
 
     .updateBook-text {
@@ -161,6 +240,10 @@
     .updateBook-row {
         display: flex;
         flex-direction: column;
+    }
+
+    .updateBook-upper{
+        align-self: center;
     }
     
 }

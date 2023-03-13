@@ -36,10 +36,12 @@ export default function UpdateBook() {
     },
   };
 
-  const updateData = async (data) => {
+  const updateData = async (e, data) => {
+    e.preventDefault();
+
     try {
       const res = await axios.put(
-        `http://localhost:5000/content/update/${id}`,
+        "//localhost:5000/content/update/" + id,
         data,
         config
       );
@@ -50,13 +52,13 @@ export default function UpdateBook() {
       console.log(message, "message put");
     } catch (error) {
       setAlert(true);
-      console.log(error);
+      console.log(error.response);
     }
   };
 
   const submitBook = (e) => {
     e.preventDefault();
-    updateData(dataBookUpdated);
+    updateData(e, dataBookUpdated);
   };
 
   const onClose = () => {
@@ -87,7 +89,7 @@ export default function UpdateBook() {
               <Form.Control
                 id="bookName"
                 type="text"
-                className="updateBook-inputFile"
+                className="updateBook-input"
                 value={bookName}
                 onChange={(e) => setBookName(e.target.value)}
               />
@@ -135,7 +137,7 @@ export default function UpdateBook() {
               <Form.Control
                 id="file"
                 type="file"
-                className="updateBook-input"
+                className="updateBook-inputFile"
                 value={fileName}
                 onChange={(e) => {
                   setFileName(e.target.value);
