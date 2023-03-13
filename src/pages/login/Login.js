@@ -31,7 +31,7 @@ export default function Login() {
 
     try {
       const res = await axios.post(
-        "//localhost:8080/login",
+        "//localhost:5000/login",
         JSON.stringify(dataUser),
         config
       );
@@ -82,7 +82,7 @@ export default function Login() {
   };
 
   return (
-    <div className="page">
+    <div className="login-page">
       <Navbar />
       {MyAlert(
         "Notice",
