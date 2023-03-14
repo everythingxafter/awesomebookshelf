@@ -1,0 +1,162 @@
+.updateBook-page{
+    background-color: #15202B;
+    height: 100vh;
+}
+
+.updateBook-text {
+    color: white;
+    margin-top: 33px;
+    margin-left: 25px;
+    font-size: 40px;
+}
+
+.updateBook-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px;
+}
+
+.updateBook-containerColumn{
+    flex:50%;
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+.updateBook-upper{
+    margin-top: -30px;
+}
+
+.updateBook-center{
+    display: flex;
+    align-items: center;
+}
+
+.updateBook-input{
+    width: 400px;
+    color: #15202B;
+    margin-left: 10px;;
+}
+
+.updateBook-label{
+    color: white;
+    font-size: 25px;
+    flex: 50%;
+}
+
+.updateBook-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.updateBook-inputTextArea{
+    width: 400px;
+    color: #15202B;
+}
+
+
+.updateBook-button{
+    width: 163px;
+}
+
+.updateBook-buttonContainer{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+@media (max-width: 700px){
+    .updateBook-inputTextArea{
+        width: 280px;
+        color: #15202B;
+        margin-left: 10px;
+    }
+    
+    .updateBook-input{
+        width: 280px;
+        color: #15202B;
+    }
+    
+    .updateBook-label{
+        color: white;
+        font-size: 16px;
+        flex: 50%;
+    }
+    
+    .updateBook-button{
+        width: 84px;
+    }
+
+    .updateBook-text {
+        color: white;
+        margin-top: 33px;
+        margin-left: 25px;
+        font-size: 20px;
+    }
+
+    .updateBook-containerColumn{
+        padding-left: 30px;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .updateBook-container{
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+    }
+
+    .updateBook-row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+@media (max-width: 350px){
+    .updateBook-inputTextArea{
+        width: 190px;
+        color: #15202B;
+        margin-left: 10px;
+    }
+    
+    .updateBook-input{
+        width: 190px;
+        color: #15202B;
+    }
+    
+    .updateBook-label{
+        color: white;
+        font-size: 14px;
+        flex: 50%;
+    }
+    
+    .updateBook-button{
+        width: 65px;
+    }
+
+    .updateBook-text {
+        color: white;
+        margin-top: 33px;
+        margin-left: 25px;
+        font-size: 15px;
+    }
+
+    .updateBook-containerColumn{
+        padding-left: 30px;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .updateBook-container{
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+    }
+
+    .updateBook-row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
