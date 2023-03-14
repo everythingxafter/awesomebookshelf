@@ -14,7 +14,7 @@ export default function UpdateBook() {
   const [alert, setAlert] = useState(false);
   const [bookName, setBookName] = useState(preliminaryData?.Title);
   const [genre, setGenre] = useState(preliminaryData?.Genres);
-  const [file, setFile] = useState({});
+  const [file, setFile] = useState(preliminaryData?.Poster);
   const [fileName, setFileName] = useState("");
   const [sinopsis, setSinopsis] = useState(preliminaryData?.Sinopsis);
   const [bookRelease, setBookRelease] = useState(preliminaryData?.ReleaseDate);
@@ -23,7 +23,9 @@ export default function UpdateBook() {
 
   const dataBookUpdated = new FormData();
   dataBookUpdated.append("title", bookName);
-  dataBookUpdated.append("file", file);
+  if (file) {
+    dataBookUpdated.append("file", file);
+  }
   dataBookUpdated.append("sinopsis", sinopsis);
   dataBookUpdated.append("stories", stories);
   dataBookUpdated.append("genres", genre);
@@ -40,26 +42,15 @@ export default function UpdateBook() {
     e.preventDefault();
 
     try {
-      const res = await axios.put(
+      const res = await axios.patch(
         "//localhost:5000/content/update/" + id,
         data,
         config
       );
 
-      //const res = await fetch(`//localhost:5000/content/update/${id}`, {
-      // method: "PUT",
-      // headers: {
-      // accept: "body",
-      //"Content-Type": "multipart/form-data",
-      // access_token,
-      // },
-      // body: dataBookUpdated,
-      // });
-
       const message = res.data.message;
       setAlert(true);
       setMessage(message);
-      console.log(message, "message put");
     } catch (error) {
       setAlert(true);
       console.log(error);
