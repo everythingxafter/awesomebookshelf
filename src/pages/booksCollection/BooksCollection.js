@@ -2,7 +2,7 @@ import React from "react";
 import NavbarSide from "../../component/navbar/NavbarSide";
 import './BooksCollection.css'
 import CarouselCollection from "./component/CarouselCollection";
-import NavbarSearch from "./component/NavbarSearch";
+import NavbarSearch from "../../component/navbar/NavbarSearch";
 import PopularBook from "./component/PopularBook";
 
 export default function BooksCollection() {
