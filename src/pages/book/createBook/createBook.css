@@ -1,6 +1,6 @@
 .createBook-page{
     background-color: #15202B;
-    height: 100vh;
+    height: max-content;
 }
 
 .createBook-text {
@@ -69,9 +69,25 @@
     padding: 10px;
 }
 
+.createBook-image {
+    width: 250px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.createBook-imageContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
 @media (max-width: 850px){
     .createBook-page{
         height: max-content;
+    }
+
+    .createBook-image {
+        width: 250px;
     }
 
     .createBook-inputTextArea{
@@ -136,6 +152,10 @@
         height: max-content;
     }
 
+    .createBook-image {
+        width: 200px;
+    }
+
     .createBook-inputTextArea{
         width: 350px;
         color: #15202B;
@@ -190,6 +210,8 @@
         display: flex;
         flex-direction: column;
     }
+
+    
     
 }
 
@@ -198,6 +220,10 @@
         width: 190px;
         color: #15202B;
         margin-left: 10px;
+    }
+
+    .createBook-image {
+        width: 100px;
     }
     
     .createBook-input{

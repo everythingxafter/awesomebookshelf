@@ -16,6 +16,7 @@ export default function CreateBook() {
   const [bookRelease, setBookRelease] = useState("");
   const [stories, setStories] = useState("");
   const [message, setMessage] = useState("");
+  const [preview, setPreview] = useState("");
 
   const dataBook = new FormData();
   dataBook.append("title", bookName);
@@ -138,9 +139,16 @@ export default function CreateBook() {
                 onChange={(e) => {
                   setFileName(e.target.value);
                   setFile(e.target.files[0]);
+                  setPreview(URL.createObjectURL(e.target.files[0]));
                 }}
               />
             </Form.Group>
+            <div className="createBook-imageContainer">
+              {preview ? (
+                <img className="createBook-image" src={preview} alt="Preview" />
+              ) : null}
+            </div>
+
             <Form.Group
               className="mb-3 createBook-row"
               controlId="exampleForm.ControlInput1"
