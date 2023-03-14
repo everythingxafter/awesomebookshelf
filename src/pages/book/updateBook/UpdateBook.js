@@ -1,46 +1,50 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useLocation } from "react-router";
-//import MyAlert from "../../../component/alert/MyAlert";
+import { useLocation, useParams } from "react-router";
+import MyAlert from "../../../component/alert/MyAlert";
 import Navbar from "../../../component/navbar/Navbar";
 import "./UpdateBook.css";
 
 export default function UpdateBook() {
   const access_token = localStorage.getItem("access_token");
   const { state } = useLocation();
-  const { id, preliminaryData } = state;
+  const { preliminaryData } = state;
+  const { id } = useParams();
   const [alert, setAlert] = useState(false);
-  const [bookName, setBookName] = useState(preliminaryData?.name);
-  const [genre, setGenre] = useState(preliminaryData?.description1);
-  const [imageUrl, setImageUrl] = useState(preliminaryData?.image);
-  const [sinopsis, setSinopsis] = useState(preliminaryData?.description2);
-  const [bookRelease, setBookRelease] = useState(preliminaryData?.description3);
-  const [author, setAuthor] = useState(preliminaryData?.description4);
+  const [bookName, setBookName] = useState(preliminaryData?.Title);
+  const [genre, setGenre] = useState(preliminaryData?.Genres);
+  const [file, setFile] = useState("");
+  const [fileName, setFileName] = useState("");
+  const [sinopsis, setSinopsis] = useState(preliminaryData?.Sinopsis);
+  const [bookRelease, setBookRelease] = useState(preliminaryData?.ReleaseDate);
+  const [stories, setStories] = useState(preliminaryData?.Stories);
   const [message, setMessage] = useState("");
+  const [preview, setPreview] = useState(preliminaryData?.Url);
 
-  const dataBookUpdated = {
-    name: bookName,
-    image: imageUrl,
-    description1: genre,
-    description2: sinopsis,
-    description3: bookRelease,
-    description4: author,
-  };
+  const dataBookUpdated = new FormData();
+  dataBookUpdated.append("title", bookName);
+  if (file) {
+    dataBookUpdated.append("file", file);
+  }
+  dataBookUpdated.append("sinopsis", sinopsis);
+  dataBookUpdated.append("stories", stories);
+  dataBookUpdated.append("genres", genre);
+  dataBookUpdated.append("releaseDate", bookRelease);
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      access_token: access_token,
+      "Content-Type": "multipart/form-data",
+      access_token,
     },
   };
 
-  console.log(preliminaryData, "data");
-  const updateData = async (data) => {
+  const updateData = async (e, data) => {
+    e.preventDefault();
+
     try {
-      const res = await axios.put(
-        `//localhost:8080/content/update/${id}`,
+      const res = await axios.patch(
+        "//localhost:5000/content/update/" + id,
         data,
         config
       );
@@ -48,7 +52,6 @@ export default function UpdateBook() {
       const message = res.data.message;
       setAlert(true);
       setMessage(message);
-      console.log(message, "message put");
     } catch (error) {
       setAlert(true);
       console.log(error);
@@ -57,7 +60,7 @@ export default function UpdateBook() {
 
   const submitBook = (e) => {
     e.preventDefault();
-    updateData(dataBookUpdated);
+    updateData(e, dataBookUpdated);
   };
 
   const onClose = () => {
@@ -67,20 +70,21 @@ export default function UpdateBook() {
   return (
     <div className="updateBook-page">
       <Navbar />
-      {
-        //MyAlert(
-        // "Notice",
-        // onClose,
-        // message ? message : "Please try again :)",
-        // alert
-        // )
-      }
+      {MyAlert(
+        "Notice",
+        onClose,
+        message ? message : "Please try again :)",
+        alert
+      )}
       <div>
-        <h1 className="updateBook-text">update data</h1>
+        <h1 className="updateBook-text">Update Data</h1>
 
         <Form className="updateBook-container" onSubmit={(e) => submitBook(e)}>
-          <div className="updateBook-containerColumn">
-            <Form.Group className="mb-3 updateBook-row">
+          <div className="updateBook-containerColumn updateBook-upper">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="updateBook-label" for="bookName">
                 Book Name
               </Form.Label>
@@ -92,7 +96,10 @@ export default function UpdateBook() {
                 onChange={(e) => setBookName(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3 updateBook-row">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="updateBook-label" for="genre">
                 Genre
               </Form.Label>
@@ -124,32 +131,34 @@ export default function UpdateBook() {
               />
             </Form.Group>
           </div>
-          <div className="updateBook-containerColumn updateBook-upper">
-            <Form.Group className="mb-3 updateBook-row">
-              <Form.Label className="updateBook-label" for="imageUrl">
-                Image URL
+          <div className="updateBook-containerColumn ">
+            <Form.Group className="mb-3 updateBook-row" controlId="formFile">
+              <Form.Label className="updateBook-label" for="file">
+                Image
               </Form.Label>
+
               <Form.Control
-                id="imageUrl"
-                type="text"
-                className="updateBook-input"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
+                id="file"
+                type="file"
+                className="updateBook-inputFile"
+                value={fileName}
+                onChange={(e) => {
+                  setFileName(e.target.value);
+                  setFile(e.target.files[0]);
+                  setPreview(URL.createObjectURL(e.target.files[0]));
+                }}
               />
             </Form.Group>
-            <Form.Group className="mb-3 updateBook-row">
-              <Form.Label className="updateBook-label" for="author">
-                Author
-              </Form.Label>
-              <Form.Control
-                id="author"
-                type="text"
-                className="updateBook-input"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3 updateBook-row">
+            <div className="updateBook-containerImage">
+              {preview ? (
+                <img className="updateBook-image" src={preview} alt="Preview" />
+              ) : null}
+            </div>
+
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="updateBook-label" for="bookRelease">
                 Book Release
               </Form.Label>
@@ -159,6 +168,22 @@ export default function UpdateBook() {
                 className="updateBook-input"
                 value={bookRelease}
                 onChange={(e) => setBookRelease(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label className="updateBook-label" for="stories">
+                Stories
+              </Form.Label>
+              <Form.Control
+                id="stories"
+                as="textarea"
+                className="updateBook-input"
+                rows={10}
+                value={stories}
+                onChange={(e) => setStories(e.target.value)}
               />
             </Form.Group>
             <div className="updateBook-buttonContainer">

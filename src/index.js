@@ -58,6 +58,15 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/updatebook/:id",
+    element: (
+      <ProtectedRoute>
+        <UpdateBook />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
