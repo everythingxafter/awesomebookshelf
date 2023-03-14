@@ -3,10 +3,10 @@ import NavbarHome from "../../component/navbar/NavbarHome";
 import './Book.css'
 
 export default function Book() {
-    return (
-        <div>
-            <NavbarHome />
-            <p>ini Book</p>
-        </div>
-    )
+  return (
+    <div>
+      <NavbarHome />
+      <p>ini Book</p>
+    </div>
+  )
 }

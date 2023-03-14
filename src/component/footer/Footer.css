@@ -1,0 +1,21 @@
+.landing-ibook_footer {
+
+    justify-content: center;
+
+    background: #15202B;
+    color: #fff;
+}
+
+
+.landing-ibook__footer-logo {
+    font-weight: 700;
+
+    font-size: 2em;
+}
+
+
+
+.landing-ibook__love {
+    color: #d62727;
+
+}

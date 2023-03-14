@@ -28,3 +28,13 @@ p {
   --fontColorSecondary: #000000;
   --borderColor: #38444d;
 }
+
+html::-webkit-scrollbar-track {
+  background-color: #38444d;
+  border: 1px solid rgba(83, 92, 102, 0.6);
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: linear-gradient(0deg, #15202b, #15202b);
+}

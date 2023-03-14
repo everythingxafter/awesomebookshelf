@@ -6,15 +6,15 @@ import NavbarSearch from "../../component/navbar/NavbarSearch";
 import PopularBook from "./component/PopularBook";
 
 export default function BooksCollection() {
-    return (
-        <div style={{ display: "flex", }}>
-            <NavbarSide />
-            <div style={{ width: "100%" }}>
-                <NavbarSearch />
-                <CarouselCollection />
-                <PopularBook />
-            </div>
+  return (
+    <div style={{ display: "flex", }}>
+      <NavbarSide />
+      <div style={{ width: "100%" }}>
+        <NavbarSearch />
+        <CarouselCollection />
+        <PopularBook />
+      </div>
 
-        </div>
-    )
+    </div>
+  )
 }
