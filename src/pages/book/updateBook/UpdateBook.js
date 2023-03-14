@@ -132,9 +132,6 @@ export default function UpdateBook() {
             </Form.Group>
           </div>
           <div className="updateBook-containerColumn ">
-            {preview ? (
-              <img className="updateBook-image" src={preview} alt="Preview" />
-            ) : null}
             <Form.Group className="mb-3 updateBook-row" controlId="formFile">
               <Form.Label className="updateBook-label" for="file">
                 Image
@@ -152,6 +149,11 @@ export default function UpdateBook() {
                 }}
               />
             </Form.Group>
+            <div className="updateBook-containerImage">
+              {preview ? (
+                <img className="updateBook-image" src={preview} alt="Preview" />
+              ) : null}
+            </div>
 
             <Form.Group
               className="mb-3 updateBook-row"

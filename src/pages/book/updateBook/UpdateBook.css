@@ -61,6 +61,12 @@
     border-radius: 10px;
 }
 
+.updateBook-containerImage{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
 .updateBook-inputFile{
     width: 550px;
     height: 40px;
