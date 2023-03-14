@@ -9,7 +9,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import ErrorPage from './pages/errorPage/ErrorPage';
 import LandingPage from './pages/landingPage/LandingPage';
 import Login from './pages/login/Login';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const router = createBrowserRouter([
   {
     path: "/",
