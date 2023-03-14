@@ -3,7 +3,7 @@ import { Button, Container, Form, Nav, Navbar } from "react-bootstrap"
 
 export default function NavbarSearch() {
     return (
-        <Navbar style={{ backgroundColor: "var(--backgroundPrimary)" }}>
+        <Navbar sticky="top" style={{ backgroundColor: "var(--backgroundPrimary)" }}>
             <Container>
                 <Form className="d-flex" style={{ width: "80%" }}>
                     <Form.Control
