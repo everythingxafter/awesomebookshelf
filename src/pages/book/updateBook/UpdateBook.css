@@ -1,6 +1,6 @@
 .updateBook-page{
     background-color: #15202B;
-    height: 100vh;
+    height: max-content;
 }
 
 .updateBook-text {
@@ -54,6 +54,13 @@
     color: #15202B;
 }
 
+.updateBook-image {
+    width: 250px;
+    align-self: center;
+    margin: 10px;
+    border-radius: 10px;
+}
+
 .updateBook-inputFile{
     width: 550px;
     height: 40px;
@@ -70,6 +77,10 @@
 }
 
 @media (max-width: 850px){
+    .updateBook-image {
+        width: 250px;
+    }
+
     .updateBook-page{
         height: max-content;
     }
@@ -128,6 +139,10 @@
 }
 
 @media (max-width: 600px){
+    .updateBook-image {
+        width: 200px;
+    }
+
     .updateBook-page{
         height: max-content;
     }
@@ -189,6 +204,10 @@
 }
 
 @media (max-width: 350px){
+    .updateBook-image {
+        width: 100px;
+    }
+
     .updateBook-page{
         height: max-content;
     }

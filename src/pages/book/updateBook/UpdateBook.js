@@ -14,12 +14,13 @@ export default function UpdateBook() {
   const [alert, setAlert] = useState(false);
   const [bookName, setBookName] = useState(preliminaryData?.Title);
   const [genre, setGenre] = useState(preliminaryData?.Genres);
-  const [file, setFile] = useState(preliminaryData?.Poster);
+  const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
   const [sinopsis, setSinopsis] = useState(preliminaryData?.Sinopsis);
   const [bookRelease, setBookRelease] = useState(preliminaryData?.ReleaseDate);
   const [stories, setStories] = useState(preliminaryData?.Stories);
   const [message, setMessage] = useState("");
+  const [preview, setPreview] = useState(preliminaryData?.Url);
 
   const dataBookUpdated = new FormData();
   dataBookUpdated.append("title", bookName);
@@ -131,10 +132,14 @@ export default function UpdateBook() {
             </Form.Group>
           </div>
           <div className="updateBook-containerColumn ">
+            {preview ? (
+              <img className="updateBook-image" src={preview} alt="Preview" />
+            ) : null}
             <Form.Group className="mb-3 updateBook-row" controlId="formFile">
               <Form.Label className="updateBook-label" for="file">
-                Image URL
+                Image
               </Form.Label>
+
               <Form.Control
                 id="file"
                 type="file"
@@ -143,6 +148,7 @@ export default function UpdateBook() {
                 onChange={(e) => {
                   setFileName(e.target.value);
                   setFile(e.target.files[0]);
+                  setPreview(URL.createObjectURL(e.target.files[0]));
                 }}
               />
             </Form.Group>
