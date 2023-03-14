@@ -1,0 +1,129 @@
+.page {
+    background: linear-gradient(to bottom left,#15202B, #535C66);
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.logo{
+    width: 350px;
+    margin: 10px;
+}
+
+.textH3{
+    color: white;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.textH4 {
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.input{
+    width: 630px;
+    height: 65px;
+}
+
+.passwordInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.icon {
+    margin: 10px;
+    margin-left: -43px;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.button{
+    width: 315px;
+    height: 65px;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+@media (max-width: 700px) {
+    .logo{
+        width: 250px;
+        margin: 10px;
+    }
+    
+    .textH3{
+        color: white;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    
+    .textH4 {
+        color: white;
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 40px;
+    }
+    
+    .input{
+        width: 315px;
+        height: 60px;
+    }
+
+    .button {
+        width: 158px;
+        height: 60px;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 350px){
+    .logo{
+        width: 150px;
+        margin: 10px;
+    }
+    
+    .textH3{
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .textH4 {
+        color: white;
+        font-size: 10px;
+        font-weight: 400;
+        margin-bottom: 40px;
+    }
+    
+    .input{
+        width: 158px;
+        height: 45px;
+    }
+
+    .button {
+        width: 80px;
+        height: 45px;
+        margin-top: 15px;
+        font-size: 16px;
+    }
+}

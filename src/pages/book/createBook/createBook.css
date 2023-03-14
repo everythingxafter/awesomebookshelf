@@ -1,0 +1,273 @@
+.createBook-page{
+    background-color: #15202B;
+    height: max-content;
+}
+
+.createBook-text {
+    color: white;
+    margin-top: 33px;
+    margin-left: 25px;
+    font-size: 40px;
+}
+
+.createBook-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px;
+}
+
+.createBook-containerColumn{
+    flex:50%;
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+.createBook-upper{
+    align-self: flex-start;
+}
+
+.createBook-center{
+    display: flex;
+    align-items: center;
+}
+
+.createBook-input{
+    width: 550px;
+    color: #15202B;
+    margin-left: 10px;
+}
+
+.createBook-label{
+    color: white;
+    font-size: 25px;
+    flex: 50%;
+}
+
+.createBook-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.createBook-inputTextArea{
+    width: 550px;
+    color: #15202B;
+}
+
+.createBook-inputFile{
+    width: 550px;
+    height: 40px
+}
+
+.createBook-button{
+    width: 163px;
+}
+
+.createBook-buttonContainer{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.createBook-image {
+    width: 250px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.createBook-imageContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 850px){
+    .createBook-page{
+        height: max-content;
+    }
+
+    .createBook-image {
+        width: 250px;
+    }
+
+    .createBook-inputTextArea{
+        width: 450px;
+        color: #15202B;
+        margin-left: 10px;
+    }
+    
+    .createBook-input{
+        width: 450px;
+        color: #15202B;
+    }
+
+    .createBook-inputFile{
+        height: 40px;
+        width: 450px;
+        margin-left: 10px;
+    }
+
+    .createBook-upper{
+        align-self: center;
+    }
+    
+    .createBook-label{
+        color: white;
+        font-size: 16px;
+        flex: 50%;
+    }
+    
+    .createBook-button{
+        width: 84px;
+    }
+
+    .createBook-text {
+        color: white;
+        margin-top: 33px;
+        margin-left: 25px;
+        font-size: 23px;
+    }
+
+    .createBook-containerColumn{
+        padding-left: 30px;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .createBook-container{
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+    }
+
+    .createBook-row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+@media (max-width: 500px){
+    .createBook-page{
+        height: max-content;
+    }
+
+    .createBook-image {
+        width: 200px;
+    }
+
+    .createBook-inputTextArea{
+        width: 350px;
+        color: #15202B;
+        margin-left: 10px;
+    }
+    
+    .createBook-input{
+        width: 350px;
+        color: #15202B;
+    }
+
+    .createBook-inputFile{
+        height: 40px;
+        width: 350px;
+        margin-left: 10px;
+    }
+
+    .createBook-upper{
+        align-self: center;
+    }
+    
+    .createBook-label{
+        color: white;
+        font-size: 16px;
+        flex: 50%;
+    }
+    
+    .createBook-button{
+        width: 84px;
+    }
+
+    .createBook-text {
+        color: white;
+        margin-top: 33px;
+        margin-left: 25px;
+        font-size: 20px;
+    }
+
+    .createBook-containerColumn{
+        padding-left: 30px;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .createBook-container{
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+    }
+
+    .createBook-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    
+    
+}
+
+@media (max-width: 350px){
+    .createBook-inputTextArea{
+        width: 190px;
+        color: #15202B;
+        margin-left: 10px;
+    }
+
+    .createBook-image {
+        width: 100px;
+    }
+    
+    .createBook-input{
+        width: 190px;
+        color: #15202B;
+    }
+    
+    .createBook-label{
+        color: white;
+        font-size: 14px;
+        flex: 50%;
+    }
+
+    .createBook-inputFile{
+        width: 190px;
+        margin-left: 10px;
+    }
+    
+    .createBook-button{
+        width: 80px;
+    }
+
+    .createBook-text {
+        color: white;
+        margin-top: 33px;
+        margin-left: 25px;
+        font-size: 15px;
+    }
+
+    .createBook-containerColumn{
+        padding-left: 30px;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .createBook-container{
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+    }
+
+    .createBook-row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
