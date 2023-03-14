@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;1,700&display=swap");
+
+/* body {
+  background-color: black;
+} */
+*{
+  background-color: black;
+}
+/* Style untuk judul h1 */
+.h1 {
+  color: white;
+  font-size: 48px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.h1 span {
+  color: #3498db;
+}
+
+/* Style untuk deskripsi */
+.description {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-align: left;
+  color: white;
+}
+
+.description span {
+  color: #3498db;
+}
+
+.description-1 {
+  margin-bottom: 30px;
+}
+
+.description-1 p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: white;
+}
+
+.description-p {
+  margin-top: 6rem;
+  color: white;
+}
+
+/* Style untuk logo */
+.container-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.about-logo {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Style untuk anggota tim */
+.member-row {
+  margin-top: 50px;
+}
+
+.about-row {
+  margin-top: 50px;
+}
+
+.about-member1 img,
+.about-member2 img,
+.about-member3 img,
+.about-member4 img,
+.about-member5 img,
+.about-member6 img,
+.about-member7 img {
+  display: block;
+  margin: 3rem 2rem 2rem 2rem;
+  max-width: 90%;
+  border-radius: 100%;
+  box-shadow: 0px 0px 10px #ffffff;
+}
+
+.about-member1,
+.about-member2,
+.about-member3,
+.about-member4,
+.about-member5,
+.about-member6,
+.about-member7 {
+  text-align: center;
+}
+
+.about-member1 h2,
+.about-member2 h2,
+.about-member3 h2,
+.about-member4 h2,
+.about-member5 h2,
+.about-member6 h2,
+.about-member7 h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.about-member1 h4,
+.about-member2 h4,
+.about-member3 h4,
+.about-member4 h4,
+.about-member5 h4,
+.about-member6 h4,
+.about-member7 h4 {
+  margin-bottom: 20px;
+  color: #3498db;
+  font-size: 16px;
+}
+
+.about-member1 p,
+.about-member2 p,
+.about-member3 p,
+.about-member4 p,
+.about-member5 p,
+.about-member6 p,
+.about-member7 p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.about-member1,
+.about-member2,
+.about-member3,
+.about-member4,
+.about-member5,
+.about-member6,
+.about-member7 {
+  transition: transform 0.3s ease-in-out;
+}
+
+.about-member1:hover,
+.about-member2:hover,
+.about-member3:hover,
+.about-member4:hover,
+.about-member5:hover,
+.about-member6:hover,
+.about-member7:hover {
+  transform: scale(1.05);
+}
+
+.container-logo {
+  transition: transform 0.3s ease-in-out;
+}
+
+.container-logo :hover {
+  transform: scale(1.05);
+}
