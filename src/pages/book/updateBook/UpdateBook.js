@@ -1,26 +1,25 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useLocation, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import MyAlert from "../../../component/alert/MyAlert";
-import NavbarSide from "../../../component/navbar/NavbarSide";
 import "./UpdateBook.css";
 
 export default function UpdateBook() {
   const access_token = localStorage.getItem("access_token");
-  const { state } = useLocation();
-  const { preliminaryData } = state;
+  const navigate = useNavigate()
+  const [preliminaryData, setPreliminaryData] = useState({});
   const { id } = useParams();
   const [alert, setAlert] = useState(false);
-  const [bookName, setBookName] = useState(preliminaryData?.Title);
-  const [genre, setGenre] = useState(preliminaryData?.Genres);
+  const [bookName, setBookName] = useState("");
+  const [genre, setGenre] = useState("");
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const [sinopsis, setSinopsis] = useState(preliminaryData?.Sinopsis);
-  const [bookRelease, setBookRelease] = useState(preliminaryData?.ReleaseDate);
-  const [stories, setStories] = useState(preliminaryData?.Stories);
+  const [sinopsis, setSinopsis] = useState("");
+  const [bookRelease, setBookRelease] = useState("");
+  const [stories, setStories] = useState("");
   const [message, setMessage] = useState("");
-  const [preview, setPreview] = useState(preliminaryData?.Url);
+  const [preview, setPreview] = useState("");
 
   const dataBookUpdated = new FormData();
   dataBookUpdated.append("title", bookName);
@@ -39,6 +38,32 @@ export default function UpdateBook() {
     },
   };
 
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await axios.get("//localhost:5000/content/data/" + id);
+        setPreliminaryData(res.data);
+        setBookName(preliminaryData?.Title);
+        setSinopsis(preliminaryData?.Sinopsis);
+        setBookRelease(preliminaryData?.ReleaseDate);
+        setStories(preliminaryData?.Stories);
+        setPreview(preliminaryData?.Url);
+        setGenre(preliminaryData?.Genres)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, [
+    id,
+    preliminaryData?.Genres,
+    preliminaryData?.Url,
+    preliminaryData?.Title,
+    preliminaryData?.Sinopsis,
+    preliminaryData?.ReleaseDate,
+    preliminaryData?.Stories,
+  ]);
+
   const updateData = async (e, data) => {
     e.preventDefault();
 
@@ -52,11 +77,14 @@ export default function UpdateBook() {
       const message = res.data.message;
       setAlert(true);
       setMessage(message);
+      navigate("/dashboard")
     } catch (error) {
       setAlert(true);
       console.log(error);
     }
   };
+
+  console.log(preliminaryData);
 
   const submitBook = (e) => {
     e.preventDefault();
@@ -69,7 +97,6 @@ export default function UpdateBook() {
 
   return (
     <div className="updateBook-page">
-      <NavbarSide />
       {MyAlert(
         "Notice",
         onClose,
