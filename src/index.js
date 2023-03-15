@@ -85,7 +85,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/savedbook",
+    path: "/searchbook",
     element: (
       <SearchPage />
     ),
