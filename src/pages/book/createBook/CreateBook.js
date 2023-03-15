@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import MyAlert from "../../../component/alert/MyAlert";
-import Navbar from "../../../component/navbar/Navbar";
 import "./createBook.css";
 
 export default function CreateBook() {
@@ -61,7 +60,6 @@ export default function CreateBook() {
 
   return (
     <div className="createBook-page">
-      <Navbar />
       {MyAlert(
         "Notice",
         onClose,

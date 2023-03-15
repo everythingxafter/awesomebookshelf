@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../component/navbar/Navbar";
 import "./Book.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -11,8 +10,7 @@ import { FaBookmark, FaHeart } from "react-icons/fa";
 export default function Book() {
   return (
     <div>
-      <Navbar />
-      {/* <div className="overflow-hidden">
+      ßß      {/* <div className="overflow-hidden">
         <img src={BgReading} alt="" className="img-fluid" />
       </div> */}
       <section className="wrap-book">
