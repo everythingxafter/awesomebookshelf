@@ -14,7 +14,7 @@ import axios from "axios";
 
 export default function Book() {
   useEffect(() => {
-    document.title = `iRead | Home`;
+    document.title = `iRead | ${ContentById.Title}`;
   }, []);
 
   const { id } = useParams();
