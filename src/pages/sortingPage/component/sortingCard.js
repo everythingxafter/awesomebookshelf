@@ -16,7 +16,7 @@ export default function SortingCard() {
                 marginTop: '1em',
                 marginBottom: '1em'
             }} >
-                <h3>Judulnya heheheh ini biar lebih panjang gambarnya neko biar tambah semangat</h3>
+                <h4>Judulnya heheheh ini biar lebih panjang gambarnya neko biar tambah semangat</h4>
             </div>
         </div>
     )
