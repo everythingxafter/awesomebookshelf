@@ -6,7 +6,11 @@ import { Link, } from "react-router-dom";
 
 export default function NavbarHome() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar variant="dark" expand="lg" style={{
+            backgroundColor: 'var(--backgroundPrimary) !important',
+            color: 'var(--fontColorPrimary)',
+            zIndex: '9999'
+        }}>
             <Container>
                 <Navbar.Brand as={Link} to={`/`}>iRead</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -19,7 +23,7 @@ export default function NavbarHome() {
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
 
     )
 }

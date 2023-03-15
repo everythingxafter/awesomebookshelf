@@ -1,19 +1,19 @@
 .landing-ibook__best-card {
-    border: 2px solid rgba(83, 92, 102, 0.6);
-    background: #15202B;
-    width: 15em;
+  border: 2px solid rgba(83, 92, 102, 0.6);
+  background: var(--backgroundSecondary);
+  width: 15em;
 }
 
 .landing-ibook__best-image {
-    padding: 15px;
-    border-radius: 15px;
-    height: 20em;
-    width: 100%;
-    object-fit: cover;
+  padding: 15px;
+  border-radius: 15px;
+  height: 20em;
+  width: 100%;
+  object-fit: cover;
 }
 
 .landing-ibook__best-button {
-    width: 100%;
+  width: 100%;
 }
 
 /* .swiper-slide {

@@ -6,6 +6,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import Poster from "./Poster.png";
 import BookTitle from "./book-title.png";
 import { FaBookmark, FaHeart } from "react-icons/fa";
+import NavbarHome from "../../component/navbar/NavbarHome"
 
 export default function Book() {
   return (
@@ -13,6 +14,7 @@ export default function Book() {
       ßß      {/* <div className="overflow-hidden">
         <img src={BgReading} alt="" className="img-fluid" />
       </div> */}
+      <NavbarHome />
       <section className="wrap-book">
         <Container className="mt-5">
           <Row className="mb-5">
