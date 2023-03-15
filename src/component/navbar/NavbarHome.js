@@ -1,4 +1,5 @@
 import React from "react";
+import "./NavbarHome.css"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -6,10 +7,10 @@ import { Link, } from "react-router-dom";
 
 export default function NavbarHome() {
     return (
-        <Navbar variant="dark" expand="lg" style={{
-            backgroundColor: 'var(--backgroundPrimary) !important',
-            color: 'var(--fontColorPrimary)',
-            zIndex: '9999'
+        <Navbar variant="dark" expand="lg" className="navigation" style={{
+            zIndex: '9999',
+            position: "sticky",
+            top: "0",
         }}>
             <Container>
                 <Navbar.Brand as={Link} to={`/`}>iRead</Navbar.Brand>

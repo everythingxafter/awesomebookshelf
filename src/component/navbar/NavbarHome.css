@@ -1,0 +1,6 @@
+.navigation {
+  position: sticky;
+  top: 0;
+  background-color: var(--backgroundPrimary) !important;
+  color: var(--fontColorPrimaryy);
+}

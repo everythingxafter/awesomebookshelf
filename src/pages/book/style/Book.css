@@ -1,0 +1,44 @@
+.wrap-book {
+    width: 100%;
+    padding-top: 120px;
+    background-color: var(--backgroundPrimary) !important;
+    color: var(--fontColorPrimary);
+    position: relative;
+    z-index: 0;
+}
+
+.wrap-book .bannerBook {
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: 50% 20%;
+    filter: blur(10px) contrast(60%);
+}
+
+.wrap-book .ContainerBook {
+    z-index: 5;
+}
+
+.wrap-book pre {
+    max-width: 736px;
+}
+
+.wrap-book .ContainerBook .posterBook {
+    object-fit: cover;
+    width: 303px;
+    height: 427px;
+    border-radius: 10px;
+}
+
+.infoBook {
+    padding-right: 30px;
+}
+
+.infoBook p {
+    width: 100px;
+    margin: 0;
+}
