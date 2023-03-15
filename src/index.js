@@ -5,6 +5,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AboutUs from "./pages/aboutUs/AboutUs";
 import Book from "./pages/book/Book";
+import UpdateBook from "./pages/book/updateBook/UpdateBook";
 import BooksCollection from "./pages/booksCollection/BooksCollection";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ErrorPage from "./pages/errorPage/ErrorPage";
@@ -57,6 +58,15 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/updatebook/:id",
+    element: (
+      <ProtectedRoute>
+        <UpdateBook />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
