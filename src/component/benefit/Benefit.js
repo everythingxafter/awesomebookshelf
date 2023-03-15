@@ -16,9 +16,7 @@ const Benefit = () => {
             </span>
           </h1>
           <span className="landing-ibook__benefit-subheading">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
+          You will find various types of books on this website. Happy Reading!
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -48,8 +46,8 @@ const Benefit = () => {
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Z" />
             </svg>
           )}
-          title="keunggulan website yang pertama"
-          content=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+          title="Aksesibilitas yang lebih mudah"
+          content="Dengan membaca buku digital lewat web, Anda dapat mengakses buku kapan saja dan di mana saja selama Anda memiliki koneksi internet dan perangkat yang sesuai. Anda tidak perlu pergi ke toko buku fisik atau menunggu pengiriman buku ke rumah Anda."
         />
 
         <BenefitCard
@@ -65,32 +63,32 @@ const Benefit = () => {
               <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z" />
             </svg>
           }
-          title="Keunggulan website yang kedua"
-          content=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+          title="Biaya yang lebih murah"
+          content="Buku digital seringkali lebih murah daripada buku cetak, dan beberapa buku digital bahkan dapat diakses secara gratis di web."
         />
 
         <BenefitCard
           icon={() => <i class="fa fa-university" aria-hidden="true"></i>}
-          title="Lorem Impsum Dolor Sit Amet"
-          content=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+          title="Portabilitas yang lebih baik"
+          content="Anda dapat membawa banyak buku digital dalam satu perangkat, seperti laptop atau tablet, sehingga memudahkan Anda membawa banyak buku di mana saja tanpa perlu membawa buku cetak yang berat."
         />
 
         <BenefitCard
           icon={() => <i class="fa fa-university" aria-hidden="true"></i>}
-          title="Lorem Impsum Dolor Sit Amet"
-          content=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+          title="Fasilitas pencarian"
+          content="Buku digital biasanya memiliki fitur pencarian yang memungkinkan Anda menemukan informasi tertentu dengan cepat dan mudah. Hal ini sangat membantu jika Anda perlu mencari informasi spesifik dalam buku yang panjang."
         />
 
         <BenefitCard
           icon={() => <i class="fa fa-university" aria-hidden="true"></i>}
-          title="Lorem Impsum Dolor Sit Amet"
-          content=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+          title="Interaktivitas yang lebih baik"
+          content="Beberapa buku digital di web dilengkapi dengan fitur interaktif seperti video, audio, atau gambar yang memperkaya pengalaman membaca Anda."
         />
 
         <BenefitCard
           icon={() => <i class="fa fa-university" aria-hidden="true"></i>}
-          title="Lorem Impsum Dolor Sit Amet"
-          content=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+          title="Ramah lingkungan"
+          content="Membaca buku digital lewat web dapat membantu mengurangi jumlah kertas yang digunakan untuk mencetak buku cetak. Ini dapat membantu mengurangi dampak lingkungan dari industri percetakan dan penerbitan."
         />
       </Row>
     </Container>

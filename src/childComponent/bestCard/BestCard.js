@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import "./bestcard.css";
 
-const BestCard = ({ images }) => {
+const BestCard = ({ images, onClick}) => {
   return (
     <Card className="landing-ibook__best-card">
       <Card.Img
@@ -11,7 +11,7 @@ const BestCard = ({ images }) => {
         className="landing-ibook__best-image"
       />
       <Card.Body className="landing-ibook__best-body">
-        <Button variant="primary" className="landing-ibook__best-button">
+        <Button variant="primary" className="landing-ibook__best-button" onClick={onClick}>
           Read Now
         </Button>
       </Card.Body>
