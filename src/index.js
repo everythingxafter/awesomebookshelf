@@ -1,15 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './index.css';
-import AboutUs from './pages/aboutUs/AboutUs';
-import Book from './pages/book/Book';
-import BooksCollection from './pages/booksCollection/BooksCollection';
-import Dashboard from './pages/dashboard/Dashboard';
-import ErrorPage from './pages/errorPage/ErrorPage';
-import LandingPage from './pages/landingPage/LandingPage';
-import Login from './pages/login/Login';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import AboutUs from "./pages/aboutUs/AboutUs";
+import Book from "./pages/book/Book";
+import BooksCollection from "./pages/booksCollection/BooksCollection";
+import Dashboard from "./pages/dashboard/Dashboard";
+import ErrorPage from "./pages/errorPage/ErrorPage";
+import LandingPage from "./pages/landingPage/LandingPage";
+import Login from "./pages/login/Login";
+import ProtectedRoute from "./component/protectedRoute/protectedRoute";
+import CreateBook from "./pages/book/createBook/CreateBook";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,14 +41,23 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
   },
-
+  {
+    path: "/createbook",
+    element: (
+      <ProtectedRoute>
+        <CreateBook />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
 ]);
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <RouterProvider router={router} />
-);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={router} />);
