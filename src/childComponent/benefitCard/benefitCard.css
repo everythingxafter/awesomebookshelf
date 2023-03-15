@@ -1,0 +1,47 @@
+.landing-ibook__benefit-card {
+
+    color: #fff;
+
+
+
+    padding: 20px;
+    border: 2px solid #535C66;
+    background: #15202B;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+}
+
+.landing-ibook__icon-container {
+    width: 60px;
+    height: 60px;
+
+    background: #108ADC;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+}
+
+
+
+
+
+.landing-ibook__card-heading {
+    font-size: 1.5em;
+    font-style: normal;
+    font-family: Poppins;
+    font-weight: 600;
+    line-height: 39px;
+}
+
+.landing-ibook__card-text {
+    font-style: normal;
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: 27px;
+}
+
+.landing-ibook__benefit-card {
+    margin-top: 50px;
+    overflow: hidden;
+}
