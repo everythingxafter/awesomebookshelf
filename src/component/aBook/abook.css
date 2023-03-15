@@ -4,7 +4,6 @@
 }
 
 .landing-ibook__abook {
-
     padding-top: 58px;
     padding-left: 48px;
     padding-right: 48px;
@@ -12,16 +11,14 @@
     background-image: linear-gradient(0deg, #15202B, #15202B);
 }
 
-
 .landing-ibook__abook-images {
-
-    object-fit: cover;
-
+    width: 300px;
+    height: 400px;
+    
 }
 
 .landing-ibook__container-abook {
     gap: 16px;
-
     height: 100%;
     display: flex;
     align-items: flex-start;
@@ -46,7 +43,6 @@
 .landing-ibook__button-abook {
     padding: 10px 20px;
     font-style: normal;
-
     font-weight: 700;
     border-radius: 8px;
     background-color: rgb(16, 138, 220);

@@ -1,19 +1,111 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import MyAlert from "../../component/alert/MyAlert";
 import NavbarSearch from "../../component/navbar/NavbarSearch";
 import NavbarSide from "../../component/navbar/NavbarSide";
-import './Dashboard.css'
+import DashboardCard from "./component/DashboardCard";
+import "./Dashboard.css";
 
 export default function Dashboard() {
+  const access_token = localStorage.getItem("access_token");
+  const username = localStorage.getItem("username")
+  const [data, setData] = useState([]);
+  const [alert, setAlert] = useState(false);
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  const dataBook = [];
+
+  data.filter((value) => {
+    if (value?.Username === username) {
+      dataBook.push(value);
+    }
+
+    return dataBook;
+  });
+
+  const getUserBookData = async (e) => {
+    try {
+      const res = await axios.get("//localhost:5000/content/data");
+      setData(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUserBookData();
+  }, []);
+
+  const onUpdate = (id) => {
+    navigate("/updatebook/" + id);
+  };
+
+  const config = {
+    headers: {
+      access_token,
+    },
+  };
+
+  const onDelete = async (id) => {
+    try {
+      const res = await axios.delete(
+        "//localhost:5000/content/delete/" + id,
+        config
+      );
+      setMessage(res.data.message);
+      navigate("/dashboard")
+      setAlert(true);
+    } catch (error) {
+      setAlert(true);
+      console.log(error);
+    }
+  };
+
+  const onClose = () => {
+    setAlert(false);
+  };
+
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: "flex" }}>
       <NavbarSide />
-      <div style={{ width: '100%' }}>
-        <NavbarSearch />
-        <Container style={{ marginTop: '3em', marginBottom: '2em', color: 'var(--fontColorPrimary)' }}>
+      {MyAlert(
+        "Notice",
+        onClose,
+        message ? message : "Failed to Delete The Data",
+        alert
+      )}
+      <div style={{ width: "100%" }}>
+        <NavbarSearch username={username} />
+        <Container
+          style={{
+            marginTop: "3em",
+            marginBottom: "2em",
+            color: "var(--fontColorPrimary)",
+          }}
+        >
           <h1>Your book</h1>
+        </Container>
+        <Container
+          style={{ display: "flex", gap: "1em", flexDirection: "column" }}
+        >
+          {dataBook?.map((data) => {
+            return (
+              <DashboardCard
+                title={data?.Title}
+                genre={data?.Genres}
+                pageView={data?.PageViews}
+                publishAt={data?.createdAt}
+                updateAt={data?.updatedAt}
+                url={data?.Url}
+                onUpdate={() => onUpdate(data?.id)}
+                onDelete={() => onDelete(data?.id)}
+              />
+            );
+          })}
         </Container>
       </div>
     </div>
-  )
+  );
 }

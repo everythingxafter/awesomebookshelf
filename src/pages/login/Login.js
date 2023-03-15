@@ -39,6 +39,7 @@ export default function Login() {
 
       if (token) {
         localStorage.setItem("access_token", token);
+        localStorage.setItem("username", username)
         navigate("/dashboard");
         setAlert(false);
       } else {

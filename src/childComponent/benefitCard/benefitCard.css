@@ -1,17 +1,16 @@
 .landing-ibook__benefit-card {
   color: #fff;
-
   padding: 20px;
   border: 2px solid #535c66;
   background: var(--backgroundSecondary);
   box-sizing: border-box;
   border-radius: 10px;
+  height: 85%;
 }
 
 .landing-ibook__icon-container {
   width: 60px;
   height: 60px;
-
   background: #108adc;
   align-items: center;
   border-radius: 50%;

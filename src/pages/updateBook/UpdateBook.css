@@ -1,4 +1,4 @@
-.updateBook-page{
+.updateBook-page {
     background-color: #15202B;
     height: max-content;
 }
@@ -10,35 +10,36 @@
     font-size: 40px;
 }
 
-.updateBook-container{
+.updateBook-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 24px;
 }
 
-.updateBook-containerColumn{
-    flex:50%;
+.updateBook-containerColumn {
+    flex: 50%;
     padding-left: 30px;
     padding-right: 20px;
 }
 
-.updateBook-upper{
+.updateBook-upper {
     align-self: flex-start;
 }
 
-.updateBook-center{
+.updateBook-center {
     display: flex;
     align-items: center;
 }
 
-.updateBook-input{
+.updateBook-input {
     width: 550px;
     color: #15202B;
-    margin-left: 10px;;
+    margin-left: 10px;
+    ;
 }
 
-.updateBook-label{
+.updateBook-label {
     color: white;
     font-size: 25px;
     flex: 50%;
@@ -49,68 +50,68 @@
     flex-direction: row;
 }
 
-.updateBook-inputTextArea{
+.updateBook-inputTextArea {
     width: 550px;
     color: #15202B;
 }
 
 .updateBook-image {
-    width: 250px;
+    width: 200px;
     align-self: center;
     margin: 10px;
     border-radius: 10px;
 }
 
-.updateBook-containerImage{
+.updateBook-containerImage {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 20px;
 }
 
-.updateBook-inputFile{
+.updateBook-inputFile {
     width: 550px;
     height: 40px;
 }
 
-.updateBook-button{
+.updateBook-button {
     width: 163px;
 }
 
-.updateBook-buttonContainer{
+.updateBook-buttonContainer {
     display: flex;
     justify-content: flex-end;
     padding: 10px;
 }
 
-@media (max-width: 850px){
+@media (max-width: 850px) {
     .updateBook-image {
         width: 250px;
     }
 
-    .updateBook-page{
+    .updateBook-page {
         height: max-content;
     }
 
-    .updateBook-inputTextArea{
+    .updateBook-inputTextArea {
         color: #15202B;
         margin-left: 10px;
     }
-    
-    .updateBook-input{
+
+    .updateBook-input {
         color: #15202B;
     }
 
-    .updateBook-inputFile{
+    .updateBook-inputFile {
         height: 40px;
     }
-    
-    .updateBook-label{
+
+    .updateBook-label {
         color: white;
         font-size: 16px;
         flex: 50%;
     }
-    
-    .updateBook-button{
+
+    .updateBook-button {
         width: 84px;
     }
 
@@ -121,13 +122,13 @@
         font-size: 20px;
     }
 
-    .updateBook-containerColumn{
+    .updateBook-containerColumn {
         padding-left: 30px;
         padding-right: 20px;
         margin-top: 10px;
     }
 
-    .updateBook-container{
+    .updateBook-container {
         display: flex;
         flex-direction: column;
         margin: 24px;
@@ -138,44 +139,44 @@
         flex-direction: column;
     }
 
-    .updateBook-upper{
+    .updateBook-upper {
         align-self: center;
     }
-    
+
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
     .updateBook-image {
         width: 200px;
     }
 
-    .updateBook-page{
+    .updateBook-page {
         height: max-content;
     }
 
-    .updateBook-inputTextArea{
+    .updateBook-inputTextArea {
         width: 300px;
         color: #15202B;
         margin-left: 10px;
     }
-    
-    .updateBook-input{
+
+    .updateBook-input {
         width: 300px;
         color: #15202B;
     }
 
-    .updateBook-inputFile{
+    .updateBook-inputFile {
         width: 300px;
         height: 40px;
     }
-    
-    .updateBook-label{
+
+    .updateBook-label {
         color: white;
         font-size: 16px;
         flex: 50%;
     }
-    
-    .updateBook-button{
+
+    .updateBook-button {
         width: 84px;
     }
 
@@ -186,13 +187,13 @@
         font-size: 20px;
     }
 
-    .updateBook-containerColumn{
+    .updateBook-containerColumn {
         padding-left: 30px;
         padding-right: 20px;
         margin-top: 10px;
     }
 
-    .updateBook-container{
+    .updateBook-container {
         display: flex;
         flex-direction: column;
         margin: 24px;
@@ -203,43 +204,44 @@
         flex-direction: column;
     }
 
-    .updateBook-upper{
+    .updateBook-upper {
         align-self: center;
     }
-    
+
 }
 
-@media (max-width: 350px){
+@media (max-width: 350px) {
     .updateBook-image {
         width: 100px;
     }
 
-    .updateBook-page{
+    .updateBook-page {
         height: max-content;
     }
-    .updateBook-inputTextArea{
+
+    .updateBook-inputTextArea {
         width: 190px;
         color: #15202B;
         margin-left: 10px;
     }
-    
-    .updateBook-input{
+
+    .updateBook-input {
         width: 190px;
         color: #15202B;
     }
 
-    .updateBook-inputFile{
+    .updateBook-inputFile {
         width: 190px;
         height: 40px;
     }
-    
-    .updateBook-label{
+
+    .updateBook-label {
         color: white;
         font-size: 14px;
         flex: 50%;
     }
-    
-    .updateBook-button{
+
+    .updateBook-button {
         width: 80px;
     }
 
@@ -250,13 +252,13 @@
         font-size: 15px;
     }
 
-    .updateBook-containerColumn{
+    .updateBook-containerColumn {
         padding-left: 30px;
         padding-right: 20px;
         margin-top: 10px;
     }
 
-    .updateBook-container{
+    .updateBook-container {
         display: flex;
         flex-direction: column;
         margin: 24px;
@@ -267,8 +269,8 @@
         flex-direction: column;
     }
 
-    .updateBook-upper{
+    .updateBook-upper {
         align-self: center;
     }
-    
+
 }
