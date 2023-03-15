@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useLocation, useParams } from "react-router";
 import MyAlert from "../../../component/alert/MyAlert";
-import Navbar from "../../../component/navbar/Navbar";
 import "./UpdateBook.css";
 
 export default function UpdateBook() {
@@ -69,7 +68,6 @@ export default function UpdateBook() {
 
   return (
     <div className="updateBook-page">
-      <Navbar />
       {MyAlert(
         "Notice",
         onClose,

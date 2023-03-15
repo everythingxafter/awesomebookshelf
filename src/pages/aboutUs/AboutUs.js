@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../component/navbar/Navbar";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import logo from "./assets/logo.png";
 import member1 from "./assets/member1.jpg";
@@ -8,7 +7,6 @@ import "./AboutUs.css";
 export default function AboutUs() {
   return (
     <div>
-      <Navbar />
       <Container className="container">
         <Row>
           <Col sm={8}>

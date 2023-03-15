@@ -4,11 +4,10 @@ import { Swiper } from "swiper/react";
 import { Autoplay, FreeMode, Navigation, Pagination } from "swiper";
 
 // Import Swiper styles
-import "./swipercard.css";
-import "swiper/swiper.min.css";
-import "swiper/modules/pagination/pagination.min.css";
-import "swiper/modules/free-mode/free-mode.min.css";
-import "swiper/modules/autoplay/autoplay.min.css";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
 const SwiperCard = ({ children }) => {
   const [slidesPerView, setSlidesPerView] = useState(5);

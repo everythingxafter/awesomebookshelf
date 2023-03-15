@@ -4,7 +4,6 @@ import { Button, Form, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Logo from "./Logo.png";
 import "./Login.css";
-import Navbar from "../../component/navbar/Navbar";
 import MyAlert from "../../component/alert/MyAlert";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
@@ -83,7 +82,6 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      <Navbar />
       {MyAlert(
         "Notice",
         onClose,
