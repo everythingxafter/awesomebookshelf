@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container } from "react-bootstrap";
 import { FaBookmark } from "react-icons/fa";
 
-export default function PopularBookCard() {
+export default function PopularBookCard({url, title}) {
     return (
         <div>
             <div style={{
@@ -10,7 +10,7 @@ export default function PopularBookCard() {
                 height: '350px',
                 backgroundColor: 'blue',
                 borderRadius: '16px',
-                backgroundImage: 'url(http://placekitten.com/200/300)',
+                backgroundImage: `url(${url})`,
                 backgroundSize: 'cover'
             }}>
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'row-reverse' }}>
@@ -18,7 +18,7 @@ export default function PopularBookCard() {
                 </div>
             </div>
             <Container style={{ marginTop: '1em', marginBottom: '1em', color: 'var(--fontColorPrimary)' }}>
-                <h2>Judul test</h2>
+                <h2>{title}</h2>
             </Container>
         </div>
     )
