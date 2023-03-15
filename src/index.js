@@ -13,6 +13,9 @@ import LandingPage from "./pages/landingPage/LandingPage";
 import Login from "./pages/login/Login";
 import ProtectedRoute from "./component/protectedRoute/protectedRoute";
 import CreateBook from "./pages/book/createBook/CreateBook";
+import CategoriesPage from "./pages/sortingPage/categoriesPage";
+import SavedPage from "./pages/sortingPage/savedPage";
+import SearchPage from "./pages/sortingPage/searchPage";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +67,27 @@ const router = createBrowserRouter([
       <ProtectedRoute>
         <UpdateBook />
       </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/categories",
+    element: (
+      <CategoriesPage />
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/savedbook",
+    element: (
+      <SavedPage />
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/savedbook",
+    element: (
+      <SearchPage />
     ),
     errorElement: <ErrorPage />,
   },
