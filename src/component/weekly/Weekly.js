@@ -4,8 +4,9 @@ import { Col, Container, Row } from "react-bootstrap";
 import { SwiperSlide } from "swiper/react";
 import { BestCard, SwiperCard } from "../../childComponent";
 import { useNavigate } from "react-router-dom";
+import Loading from "../loading/Loading";
 
-const Weekly = ({ data }) => {
+const Weekly = ({ data, loading }) => {
   const navigate = useNavigate();
   const onClick = (id) => {
     navigate(`/book/${id}`);
@@ -20,16 +21,20 @@ const Weekly = ({ data }) => {
 
         <Row>
           <Col>
-            <SwiperCard>
-              {data?.map((data) => (
-                <SwiperSlide className="landing-ibook__swiper-slide">
-                  <BestCard
-                    images={data?.Url}
-                    onClick={() => onClick(data?.id)}
-                  />
-                </SwiperSlide>
-              ))}
-            </SwiperCard>
+            {loading ? (
+              <Loading loading={loading} />
+            ) : (
+              <SwiperCard>
+                {data?.map((data) => (
+                  <SwiperSlide className="landing-ibook__swiper-slide">
+                    <BestCard
+                      images={data?.Url}
+                      onClick={() => onClick(data?.id)}
+                    />
+                  </SwiperSlide>
+                ))}
+              </SwiperCard>
+            )}
           </Col>
         </Row>
       </Row>

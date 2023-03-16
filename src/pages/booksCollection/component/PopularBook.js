@@ -2,8 +2,9 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import PopularBookCard from "./PopularBookCard";
 import "./PopularBook.css";
+import Loading from "../../../component/loading/Loading";
 
-export default function PopularBook({ data, dataReadingList }) {
+export default function PopularBook({ data, dataReadingList, loading }) {
   return (
     <div>
       <Container
@@ -17,16 +18,20 @@ export default function PopularBook({ data, dataReadingList }) {
       </Container>
       <Container>
         <div className="popular-book-container">
-          {data?.map((value) => {
-            return (
-              <PopularBookCard
-                url={value?.Url}
-                title={value?.Title}
-                bookData={value}
-                dataReadingList={dataReadingList}
-              />
-            );
-          })}
+          {data.length > 0 ? (
+            data?.map((value) => {
+              return (
+                <PopularBookCard
+                  url={value?.Url}
+                  title={value?.Title}
+                  bookData={value}
+                  dataReadingList={dataReadingList}
+                />
+              );
+            })
+          ) : (
+            <Loading seen={loading} />
+          )}
         </div>
       </Container>
     </div>

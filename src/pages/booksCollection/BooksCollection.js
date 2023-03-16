@@ -9,6 +9,7 @@ import axios from "axios";
 export default function BooksCollection() {
   const [data, setData] = useState([]);
   const [dataAdd, setDataAdd] = useState({});
+  const [loading, setLoading] = useState(false);
   const access_token = localStorage.getItem("access_token");
   const dataPopular = data?.sort((a, b) => {
     return b.PageViews - a.PageViews;
@@ -17,11 +18,14 @@ export default function BooksCollection() {
   const dataCarousel = dataPopular.slice(0, 3);
 
   const getData = async () => {
+    setLoading(true);
     try {
       const res = await axios.get("//localhost:5000/content/data");
       setData(res.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -50,8 +54,12 @@ export default function BooksCollection() {
       <NavbarSide />
       <div style={{ width: "100%" }}>
         <NavbarSearch />
-        <CarouselCollection data={dataCarousel} />
-        <PopularBook data={dataPopular} dataReadingList={dataAdd} />
+        <CarouselCollection data={dataCarousel} loading={loading} />
+        <PopularBook
+          data={dataPopular}
+          dataReadingList={dataAdd}
+          loading={loading}
+        />
       </div>
     </div>
   );

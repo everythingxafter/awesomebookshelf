@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import MyAlert from "../../component/alert/MyAlert";
+import Loading from "../../component/loading/Loading";
 import NavbarSearch from "../../component/navbar/NavbarSearch";
 import NavbarSide from "../../component/navbar/NavbarSide";
 import DashboardCard from "./component/DashboardCard";
@@ -10,10 +11,11 @@ import "./Dashboard.css";
 
 export default function Dashboard() {
   const access_token = localStorage.getItem("access_token");
-  const username = localStorage.getItem("username")
+  const username = localStorage.getItem("username");
   const [data, setData] = useState([]);
   const [alert, setAlert] = useState(false);
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dataBook = [];
 
@@ -26,11 +28,14 @@ export default function Dashboard() {
   });
 
   const getUserBookData = async (e) => {
+    setLoading(true);
     try {
       const res = await axios.get("//localhost:5000/content/data");
       setData(res.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -49,17 +54,20 @@ export default function Dashboard() {
   };
 
   const onDelete = async (id) => {
+    setLoading(true);
     try {
       const res = await axios.delete(
         "//localhost:5000/content/delete/" + id,
         config
       );
       setMessage(res.data.message);
-      navigate("/dashboard")
+      navigate("/dashboard");
       setAlert(true);
+      setLoading(false);
     } catch (error) {
       setAlert(true);
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -90,20 +98,24 @@ export default function Dashboard() {
         <Container
           style={{ display: "flex", gap: "1em", flexDirection: "column" }}
         >
-          {dataBook?.map((data) => {
-            return (
-              <DashboardCard
-                title={data?.Title}
-                genre={data?.Genres}
-                pageView={data?.PageViews}
-                publishAt={data?.createdAt}
-                updateAt={data?.updatedAt}
-                url={data?.Url}
-                onUpdate={() => onUpdate(data?.id)}
-                onDelete={() => onDelete(data?.id)}
-              />
-            );
-          })}
+          {dataBook.length > 0 ? (
+            dataBook?.map((data) => {
+              return (
+                <DashboardCard
+                  title={data?.Title}
+                  genre={data?.Genres}
+                  pageView={data?.PageViews}
+                  publishAt={data?.createdAt}
+                  updateAt={data?.updatedAt}
+                  url={data?.Url}
+                  onUpdate={() => onUpdate(data?.id)}
+                  onDelete={() => onDelete(data?.id)}
+                />
+              );
+            })
+          ) : (
+            <Loading seen={loading} />
+          )}
         </Container>
       </div>
     </div>
