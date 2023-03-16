@@ -1,4 +1,5 @@
 .popular-book-container {
+  max-width: 950px;
   display: flex;
   gap: 1em;
   flex-wrap: nowrap;
@@ -6,6 +7,8 @@
   scroll-snap-type: x mandatory;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
+  scroll-snap-align: start;
 }
 
 .popular-book-container::-webkit-scrollbar {

@@ -16,6 +16,7 @@ import CreateBook from "./pages/createBook/CreateBook";
 import CategoriesPage from "./pages/sortingPage/categoriesPage";
 import SavedPage from "./pages/sortingPage/savedPage";
 import SearchPage from "./pages/sortingPage/searchPage";
+import LogoutPage from "./pages/logoutPage/LogoutPage";
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,12 @@ const router = createBrowserRouter([
       <SearchPage />
     ),
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/logout",
+    element: (
+      <LogoutPage />
+    ),
   },
 ]);
 

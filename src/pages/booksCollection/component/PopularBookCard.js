@@ -99,6 +99,7 @@ export default function PopularBookCard({
           borderRadius: "16px",
           backgroundImage: `url(${url})`,
           backgroundSize: "cover",
+          scrollSnapAlign: "start",
         }}
       >
         <div
