@@ -1,0 +1,8 @@
+.search-page__container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 3em auto;
+  gap: 2em;
+  justify-content: center;
+}

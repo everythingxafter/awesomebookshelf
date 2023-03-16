@@ -17,7 +17,7 @@ export default function DashboardCard({
   const date = (date) => {
       const theDate = new Date(date).toString().split(" ")
 
-      return `${theDate[1]} ${theDate[2]} ${theDate[3]}`
+      return `${theDate[2]} ${theDate[1]} ${theDate[3]}`
     }
     
   return (

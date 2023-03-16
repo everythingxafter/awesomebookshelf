@@ -9,7 +9,6 @@ import axios from "axios";
 export default function BooksCollection() {
   const [data, setData] = useState([]);
   const [dataAdd, setDataAdd] = useState({});
-//  const [add, setAdd] = useState(false)
   const access_token = localStorage.getItem("access_token");
   const dataPopular = data?.sort((a, b) => {
     return b.PageViews - a.PageViews;

@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import MyAlert from "../../../component/alert/MyAlert";
 
 export default function PopularBookCard({
   url,
@@ -11,6 +12,8 @@ export default function PopularBookCard({
 }) {
   const access_token = localStorage.getItem("access_token");
   const [add, setAdd] = useState(false);
+  const [message, setMessage] = useState("");
+  const [alert, setAlert] = useState(false);
   const configDelete = {
     headers: {
       access_token,
@@ -20,50 +23,59 @@ export default function PopularBookCard({
     },
   };
 
+  useEffect(() => {
+    Array.from(dataReadingList).forEach((dataReading) => {
+      if (dataReading?.BookId === bookData?.id) {
+        if (!add) {
+          setAdd(true);
+        }
+      }
+    });
+  }, [add, bookData, dataReadingList]);
+
   const onClick = async () => {
-    const dataBook = {
-      id: bookData?.id,
-      username: bookData?.Username,
-      title: bookData?.Title,
-      sinopsis: bookData?.Sinopsis,
-      poster: bookData?.Poster,
-      url: bookData?.Url,
-      stories: bookData?.Stories,
-      genres: bookData?.Genres,
-      releaseDate: bookData?.ReleaseDate,
-    };
+    const dataBook = new FormData();
+    dataBook.append("id", bookData?.id);
+    dataBook.append("title", bookData?.Title);
+    dataBook.append("url", bookData?.Url);
 
     if (add) {
-      setAdd(false);
       try {
         const res = await axios.delete(
           "http://localhost:5000/readinglist/remove",
           configDelete
         );
-        console.log(res.data.message);
+
+        setAdd(false);
+        setMessage(res.data.message);
+        setAlert(true);
       } catch (error) {
-        console.log(error);
+        setAlert(true);
+        setMessage(error.response.data.message);
       }
     } else if (!add) {
-      setAdd(true);
       try {
         const res = await axios.post(
           "//localhost:5000/readinglist/add",
           dataBook,
           {
             headers: {
+              "Content-Type": "multipart/form-data",
               access_token,
             },
           }
-          );
-          
-        console.log(res.data.message);
+        );
+
+        setAdd(true);
+        setMessage(res.data.message);
+        setAlert(true);
       } catch (error) {
-        console.log(error);
+        setMessage(error.response.data.message);
+        setAlert(true);
       }
     }
-    };
-    
+  };
+
   const changeBookmarked = (status) => {
     if (status) {
       return <FaBookmark />;
@@ -71,8 +83,14 @@ export default function PopularBookCard({
       return <FaRegBookmark />;
     }
   };
+
+  const onClose = () => {
+    setAlert(false);
+  };
+
   return (
     <div>
+      {MyAlert("Notice", onClose, message, alert)}
       <div
         style={{
           width: "250px",

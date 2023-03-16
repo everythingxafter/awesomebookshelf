@@ -2,7 +2,6 @@ import React from "react";
 
 export default function SortingCard({ url, title, onClick }) {
   return (
-    <>
     <div onClick={onClick}>
       <img
         src={url}
@@ -24,6 +23,5 @@ export default function SortingCard({ url, title, onClick }) {
       <h1 className="fs-4">{title}</h1>
       </div>
     </div>
-    </>
   );
 }
