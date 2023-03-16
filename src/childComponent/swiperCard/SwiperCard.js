@@ -42,7 +42,7 @@ const SwiperCard = ({ children }) => {
     <>
       <Swiper
         slidesPerView={slidesPerView}
-        spaceBetween={30}
+        // spaceBetween={30}
         freeMode={true}
         pagination={{
           clickable: true,

@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Stack, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Wave } from "../../assets/index";
 import { HeroImage } from "../../childComponent";
 import "./Hero.css";
@@ -13,8 +14,8 @@ const Hero = () => {
             <h1 className="landing-ibook__hero-heading">A book can change your life</h1>
             <Row className="landing-ibook__btn-group">
               <Stack direction="horizontal" gap={3} className="mx-auto">
-                <Button className="landing-ibook__button button">Start Reading</Button>
-                <Button className="landing-ibook__button button">Start Writing</Button>
+                <Button as={Link} to={'/bookscollection'} className="landing-ibook__button button">Start Reading</Button>
+                <Button as={Link} to={'/dashboard'} className="landing-ibook__button button">Start Writing</Button>
               </Stack>
             </Row>
           </Col>
