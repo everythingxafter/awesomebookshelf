@@ -6,16 +6,19 @@ import Logo from "./Logo.png";
 import "./Login.css";
 import MyAlert from "../../component/alert/MyAlert";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import Loading from "../../component/loading/Loading";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
   const [typePassword, setTypePassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const login = async (username, password) => {
+    setLoading(true);
     const dataUser = {
       username: username,
       password: password,
@@ -39,14 +42,17 @@ export default function Login() {
 
       if (token) {
         localStorage.setItem("access_token", token);
-        localStorage.setItem("username", username)
+        localStorage.setItem("username", username);
         navigate("/dashboard");
         setAlert(false);
+        setLoading(false);
       } else {
         setAlert(true);
+        setLoading(false);
       }
     } catch (error) {
       setAlert(true);
+      setLoading(false);
     }
   };
 
@@ -121,9 +127,13 @@ export default function Login() {
             </div>
           </Form.Group>
           <div className="login-buttonContainer">
-            <Button className="login-button" variant="primary" type="submit">
-              Log In
-            </Button>
+            {loading ? (
+              <Loading seen={loading} />
+            ) : (
+              <Button className="login-button" variant="primary" type="submit">
+                Log In
+              </Button>
+            )}{" "}
           </div>
         </Form>
       </div>
