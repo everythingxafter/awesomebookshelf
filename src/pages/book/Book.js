@@ -33,7 +33,7 @@ export default function Book() {
     };
     getContentById();
     document.title = `iRead | ${ContentById.Title}`;
-  }, [id,ContentById.Title]);
+  }, [id, ContentById.Title]);
 
   // for (let i = 0; i < ContentById.Stories.length; i++) {
   //   console.log(ContentById.Stories[i]);
@@ -47,26 +47,26 @@ export default function Book() {
         <img src={ContentById.Url} alt="" className="bannerBook" />
         <Container className="mt-5 ContainerBook">
           <Row className="mb-5">
-            <Col md={4} className="d-flex flex-column align-items-center">
-              <div style={{ maxWidth: "303px", maxHeight: "427px" }} className="mb-4">
-                <img src={ContentById.Url} alt={ContentById.Poster} className="posterBook" />
+            <Col lg={4} className="d-flex flex-column align-items-center">
+              <div className="book__poster-left">
+                <img src={ContentById.Url} alt={ContentById.Poster} className="posterBook mb-4" />
+                <Button
+                  className="d-flex justify-content-between align-items-center px-4 mb-4"
+                  style={{
+                    width: "100%",
+                    height: "50px",
+                    backgroundColor: "#108ADC",
+                    // backgroundColor: "#00CD52",
+                    fontSize: "22px",
+                    border: "none",
+                  }}
+                >
+                  <span>
+                    <FaBookmark />
+                  </span>
+                  Save to reading list
+                </Button>
               </div>
-              <Button
-                className="d-flex justify-content-between align-items-center px-4 mb-4"
-                style={{
-                  width: "293px",
-                  height: "50px",
-                  backgroundColor: "#108ADC",
-                  // backgroundColor: "#00CD52",
-                  fontSize: "22px",
-                  border: "none",
-                }}
-              >
-                <span>
-                  <FaBookmark />
-                </span>
-                Save to reading list
-              </Button>
               {/* <Button
                 variant="success"
                 className="d-flex justify-content-start align-items-center px-4"
@@ -83,37 +83,45 @@ export default function Book() {
                 Like
               </Button> */}
             </Col>
-            <Col md={8}>
-              <div className=" d-flex align-items-end" style={{ height: "150px" }}>
-                <h1 className="fw-bold" style={{ fontSize: "34px", lineHeight: "50px" }}>
-                  {ContentById.Title}
-                </h1>
-              </div>
-              <div className="d-flex flex-row align-items-start mt-2 mb-5">
-                <div className="d-flex flex-column justify-content-center align-items-center infoBook">
-                  <p className="mb-0">
-                    <strong>Publish On</strong>
-                  </p>
-                  <p>{ContentById.ReleaseDate}</p>
+            <Col lg={8}>
+              <div className="book__body-right">
+                <div className=" d-flex align-items-end">
+                  <h1 className="fw-bold" style={{ fontSize: "34px", lineHeight: "50px" }}>
+                    {ContentById.Title}
+                  </h1>
                 </div>
-                <div className="d-flex flex-column justify-content-center align-items-center infoBook">
-                  <p className="mb-0">
-                    <strong>Author</strong>
-                  </p>
-                  <p>{ContentById.Username}</p>
+                <Row>
+                  <Col lg={3} md={6}>
+                    <div className="infobook">
+                      <p className="mb-0">
+                        <strong>Publish On</strong>
+                      </p>
+                      <p>{ContentById.ReleaseDate}</p>
+                    </div>
+                  </Col>
+                  <Col lg={3} md={6}>
+                    <div className="infobook">
+                      <p className="mb-0">
+                        <strong>Author</strong>
+                      </p>
+                      <p>{ContentById.Username}</p>
+                    </div>
+                  </Col>
+                  <Col lg={6} md={12}>
+                    <div className="infobook">
+                      {Genre.map((data) => (
+                        <Button variant="success" size="sm" className="me-1 mb-1">
+                          {data}
+                        </Button>
+                      ))}
+                    </div>
+                  </Col>
+                </Row>
+                <div style={{ maxWidth: "833px", marginTop: '3em' }}>
+                  <pre style={{ fontSize: "18px", whiteSpace: "pre-wrap" }} className="mb-4 pt-2">
+                    {ContentById.Stories}
+                  </pre>
                 </div>
-                <div className="d-flex flex-md-row flex-wrap">
-                  {Genre.map((data) => (
-                    <Button variant="success" size="sm" className="me-1 mb-1">
-                      {data}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-              <div style={{ maxWidth: "833px" }}>
-                <pre style={{ fontSize: "18px" }} className="mb-4 pt-2">
-                  {ContentById.Stories}
-                </pre>
               </div>
             </Col>
           </Row>
