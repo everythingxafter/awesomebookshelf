@@ -22,11 +22,8 @@ const Weekly = ({ data }) => {
           <Col>
             <SwiperCard>
               {data?.map((data) => (
-                <SwiperSlide className="landing-ibook__swiper-slide">
-                  <BestCard
-                    images={data?.Url}
-                    onClick={() => onClick(data?.id)}
-                  />
+                <SwiperSlide className="landing-ibook__swiper-slide" key={data.id}>
+                  <BestCard images={data?.Url} onClick={() => onClick(data?.id)} />
                 </SwiperSlide>
               ))}
             </SwiperCard>

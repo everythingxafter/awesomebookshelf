@@ -9,7 +9,6 @@
 }
 
 .landing-ibook__hero-container {
-    gap: 45px;
     z-index: 1;
     margin-top: 5em;
     margin-right: 48px;
@@ -19,8 +18,9 @@
 
 .landing-ibook__hero-heading {
     font-size: 4rem;
+    font-weight: 700;
     /* max-width: 430px; */
-    line-height: 6rem;
+    /* line-height: 6rem; */
 }
 
 .landing-ibook__btn-group {
