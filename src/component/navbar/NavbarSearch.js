@@ -7,7 +7,7 @@ export default function NavbarSearch({ username }) {
   const [search, setSearch] = useState("");
   const getSearch = (e) => {
     e.preventDefault();
-    navigate("/searchPage", {
+    navigate("/searchbook", {
       state: {
         search,
       },
