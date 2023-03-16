@@ -42,6 +42,9 @@ export default function NavbarSide() {
                             <NavLink exact to="/dashboard" activeClassName="activeClicked">
                                 <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
                             </NavLink>
+                            <NavLink exact to="/bookscollection" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="book-open">Books Collection</CDBSidebarMenuItem>
+                            </NavLink>
                             <NavLink exact to="/categories" activeClassName="activeClicked">
                                 <CDBSidebarMenuItem icon="book">Categories</CDBSidebarMenuItem>
                             </NavLink>
@@ -57,8 +60,11 @@ export default function NavbarSide() {
                             <NavLink exact to="/" activeClassName="activeClicked">
                                 <CDBSidebarMenuItem>Back to Homepage</CDBSidebarMenuItem>
                             </NavLink>
-                            <NavLink exact to="/login" activeClassName="activeClicked">
-                                <CDBSidebarMenuItem>Login</CDBSidebarMenuItem>
+                            <NavLink exact to="/bookscollection" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="book-open">Books Collection</CDBSidebarMenuItem>
+                            </NavLink>
+                            <NavLink exact to="/categories" activeClassName="activeClicked">
+                                <CDBSidebarMenuItem icon="book">Categories</CDBSidebarMenuItem>
                             </NavLink>
                         </CDBSidebarMenu>
                     )}
@@ -71,7 +77,13 @@ export default function NavbarSide() {
                         <ModalLogout show={modalShow} onHide={handleModalClose} />
                     </CDBSidebarFooter>
                 ) : (
-                    <div></div>
+                    <CDBSidebarFooter style={{ textAlign: 'center', marginBottom: '3em' }}>
+                        <NavLink exact to="/login" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem>
+                                <Button>Login</Button>
+                            </CDBSidebarMenuItem>
+                        </NavLink>
+                    </CDBSidebarFooter>
                 )}
             </CDBSidebar>
         </div>
