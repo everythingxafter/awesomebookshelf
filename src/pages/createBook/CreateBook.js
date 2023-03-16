@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import MyAlert from "../../component/alert/MyAlert";
 import "./createBook.css";
 
 export default function CreateBook() {
   const access_token = localStorage.getItem("access_token");
+  const navigate = useNavigate()
   const [alert, setAlert] = useState(false);
   const [bookName, setBookName] = useState("");
   const [genre, setGenre] = useState("");
@@ -43,6 +45,7 @@ export default function CreateBook() {
       const message = res.data.message;
       setAlert(true);
       setMessage(message);
+      navigate("/dashboard")
     } catch (error) {
       setAlert(true);
       console.log(error);
