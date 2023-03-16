@@ -58,7 +58,9 @@ export default function CategoriesPage() {
           </div>
           <Container>
             <div className="categories-page__container">
-              <SortingCard url={content.Url} title={content.Title} />
+              {content.map((value) => (
+                <SortingCard url={value?.Url} title={value?.Title} />
+              ))}
             </div>
           </Container>
         </Container>
