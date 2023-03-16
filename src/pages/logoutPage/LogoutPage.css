@@ -1,0 +1,12 @@
+.logout-page {
+  color: var(--fontColorPrimary);
+  height: 100vh;
+}
+
+.logout-page__text {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
