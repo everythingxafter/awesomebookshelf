@@ -14,7 +14,7 @@ import axios from "axios";
 
 export default function Book() {
   useEffect(() => {
-    document.title = `iRead | ${ContentById.Title}`;
+
   }, []);
 
   const { id } = useParams();
@@ -32,7 +32,8 @@ export default function Book() {
       }
     };
     getContentById();
-  }, [id]);
+    document.title = `iRead | ${ContentById.Title}`;
+  }, [id,ContentById.Title]);
 
   // for (let i = 0; i < ContentById.Stories.length; i++) {
   //   console.log(ContentById.Stories[i]);

@@ -120,7 +120,7 @@ export default function PopularBookCard({
           color: "var(--fontColorPrimary)",
         }}
       >
-        <h2>{title}</h2>
+        <h1 className="fs-4">{title}</h1>
       </Container>
     </div>
   );

@@ -20,7 +20,7 @@ export default function SortingCard({ url, title, onClick }) {
           marginBottom: "1em",
         }}
       >
-        <h4>{title}</h4>
+      <h1 className="fs-4">{title}</h1>
       </div>
     </div>
   );
