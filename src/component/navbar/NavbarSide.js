@@ -10,7 +10,7 @@ import {
 import { NavLink } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import ModalLogout from "../modal/ModalLogout";
-
+import './NavbarSide.css'
 
 export default function NavbarSide() {
     const [modalShow, setModalShow] = useState(false);
@@ -64,10 +64,10 @@ export default function NavbarSide() {
                     )}
                 </CDBSidebarContent>
                 {accessToken ? (
-                    <CDBSidebarFooter style={{ textAlign: 'center' }}>
-                        <div>
+                    <CDBSidebarFooter style={{ textAlign: 'center', marginBottom: '3em' }}>
+                        <CDBSidebarMenuItem>
                             <Button onClick={handleButtonClick}>Logout</Button>
-                        </div>
+                        </CDBSidebarMenuItem>
                         <ModalLogout show={modalShow} onHide={handleModalClose} />
                     </CDBSidebarFooter>
                 ) : (
