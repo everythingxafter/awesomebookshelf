@@ -11,6 +11,7 @@ export default function SortingCard({ url, title, onClick }) {
           height: "350px",
           borderRadius: "16px",
           objectFit: "cover",
+          cursor: "pointer"
         }}
       />
       <div
@@ -20,7 +21,7 @@ export default function SortingCard({ url, title, onClick }) {
           marginBottom: "1em",
         }}
       >
-      <h1 className="fs-4">{title}</h1>
+        <h1 className="fs-4">{title}</h1>
       </div>
     </div>
   );

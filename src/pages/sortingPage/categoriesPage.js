@@ -5,6 +5,8 @@ import NavbarSide from "../../component/navbar/NavbarSide";
 import SortingCard from "./component/sortingCard";
 import "./categoriesPage.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 export default function CategoriesPage() {
   const [content, setContent] = useState([]);
@@ -39,6 +41,8 @@ export default function CategoriesPage() {
     setKeyword(key);
   };
 
+  const navigate = useNavigate();
+
   console.log(content);
   return (
     <div style={{ display: "flex", color: "var(--fontColorPrimary)" }}>
@@ -59,7 +63,7 @@ export default function CategoriesPage() {
           <Container>
             <div className="categories-page__container">
               {content.map((value) => (
-                <SortingCard url={value?.Url} title={value?.Title} />
+                <SortingCard url={value?.Url} title={value?.Title} onClick={() => { navigate('/book/' + value?.id) }} />
               ))}
             </div>
           </Container>
