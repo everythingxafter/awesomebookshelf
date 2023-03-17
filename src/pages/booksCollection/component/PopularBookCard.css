@@ -1,0 +1,7 @@
+.modal-content {
+    background: #15202B;
+}
+
+.modal-content>* {
+    color: #fff;
+}

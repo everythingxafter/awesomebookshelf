@@ -19,7 +19,7 @@ export default function PopularBook({ data, loading }) {
       <Container>
         <Row>
           <Col>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <div className="popular-book-container">
                 {data.length > 0 ? (
                   data?.map((value) => {
@@ -27,7 +27,12 @@ export default function PopularBook({ data, loading }) {
                       <PopularBookCard
                         url={value?.Url}
                         title={value?.Title}
+                        sinopsis={value?.Sinopsis}
                         bookData={value}
+                        date={value?.ReleaseDate}
+                        username={value?.Username}
+                        genre={value?.Genres}
+                        id={value?.id}
                       />
                     );
                   })
