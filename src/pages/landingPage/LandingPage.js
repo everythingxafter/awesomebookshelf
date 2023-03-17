@@ -39,7 +39,7 @@ export default function LandingPage() {
       <Hero />
       <Benefit />
       <Abook data={dataRandom} loading={loading} />
-      <Weekly data={dataTopBook} loading={loading} />
+      <Weekly data={dataTopBook.slice(0, 10)} loading={loading} />
       <Footer />
     </React.Fragment>
   );

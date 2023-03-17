@@ -61,12 +61,11 @@ export default function Dashboard() {
         config
       );
       setMessage(res.data.message);
-      navigate("/dashboard");
       setAlert(true);
       setLoading(false);
     } catch (error) {
       setAlert(true);
-      console.log(error);
+      setMessage(error.response.data.message);
       setLoading(false);
     }
   };
@@ -78,12 +77,8 @@ export default function Dashboard() {
   return (
     <div style={{ display: "flex" }}>
       <NavbarSide />
-      {MyAlert(
-        "Notice",
-        onClose,
-        message ? message : "Failed to Delete The Data",
-        alert
-      )}
+      {MyAlert("Notice", onClose, message, alert, true, "", getUserBookData)}
+
       <div style={{ width: "100%" }}>
         <NavbarSearch username={username} />
         <Container
@@ -98,7 +93,9 @@ export default function Dashboard() {
         <Container
           style={{ display: "flex", gap: "1em", flexDirection: "column" }}
         >
-          {dataBook.length > 0 ? (
+          {loading ? (
+            <Loading seen={loading} />
+          ) : dataBook.length > 0 ? (
             dataBook?.map((data) => {
               return (
                 <DashboardCard
@@ -114,7 +111,9 @@ export default function Dashboard() {
               );
             })
           ) : (
-            <Loading seen={loading} />
+            <h4 style={{ color: "white" }}>
+              You didn't write any story, Write your own Stories
+            </h4>
           )}
         </Container>
       </div>

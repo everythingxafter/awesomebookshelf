@@ -4,11 +4,7 @@ import { Button, Container } from "react-bootstrap";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import MyAlert from "../../../component/alert/MyAlert";
 
-export default function PopularBookCard({
-  url,
-  title,
-  bookData,
-}) {
+export default function PopularBookCard({ url, title, bookData }) {
   const access_token = localStorage.getItem("access_token");
   const [add, setAdd] = useState(false);
   const [message, setMessage] = useState("");
@@ -24,7 +20,7 @@ export default function PopularBookCard({
   };
 
   useEffect(() => {
-    const config = {
+  const config = {
       headers: {
         access_token,
       },

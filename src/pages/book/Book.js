@@ -2,28 +2,69 @@ import React, { useEffect, useState } from "react";
 import "./style/Book.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
-// import BgReading from "./asset/The Regressed Demon Lord is Kind.jpeg";
-// import Poster from "./asset/Poster.png";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import NavbarHome from "../../component/navbar/NavbarHome";
-import { SwiperSlide } from "swiper/react";
-import { BestCard, SwiperCard } from "../../childComponent";
-import { Footer } from "../../component";
+import { Footer, Weekly } from "../../component";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import MyAlert from "../../component/alert/MyAlert";
 
 export default function Book() {
-  useEffect(() => {
-
-  }, []);
-
+  const access_token = localStorage.getItem("access_token");
   const { id } = useParams();
   const [ContentById, setContentById] = useState([]);
   const [Genre, setGenre] = useState([]);
+  const [dataReadingList, setDataAdd] = useState([]);
+  const [add, setAdd] = useState(false);
+  const [message, setMessage] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const configDelete = {
+    headers: {
+      access_token,
+    },
+    data: {
+      bookid: ContentById?.id,
+    },
+  };
+
+  const dataTopBook = data.sort((a, b) => {
+    return b.PageViews - a.PageViews;
+  });
+
+  const getData = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get("//localhost:5000/content/data");
+      setData(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
+    const config = {
+      headers: {
+        access_token,
+      },
+    };
+
+    const getAdd = async () => {
+      try {
+        const res = await axios.get("//localhost:5000/readinglist", config);
+        setDataAdd(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     const getContentById = async () => {
-      const response = await axios.get(`http://localhost:5000/content/data/${id}`);
+      const response = await axios.get(
+        `http://localhost:5000/content/data/${id}`
+      );
       setContentById(response.data);
       if (response.data !== undefined) {
         setGenre(response.data.Genres.split(", "));
@@ -31,41 +72,129 @@ export default function Book() {
         console.log("nice try");
       }
     };
-    getContentById();
-    document.title = `iRead | ${ContentById.Title}`;
-  }, [id, ContentById.Title]);
 
-  // for (let i = 0; i < ContentById.Stories.length; i++) {
-  //   console.log(ContentById.Stories[i]);
-  // }
+    getContentById();
+    getAdd();
+    getData();
+
+    document.title = `iRead | ${ContentById.Title}`;
+  }, [id, ContentById.Title, access_token]);
+
+  Array.from(dataReadingList).forEach((dataReading) => {
+    if (dataReading?.BookId === ContentById?.id) {
+      if (!add) {
+        setAdd(true);
+      }
+    }
+  });
+
+  const onClick = async () => {
+    const dataBook = new FormData();
+    dataBook.append("id", ContentById?.id);
+    dataBook.append("title", ContentById?.Title);
+    dataBook.append("url", ContentById?.Url);
+
+    if (add) {
+      try {
+        const res = await axios.delete(
+          "http://localhost:5000/readinglist/remove",
+          configDelete
+        );
+
+        setAdd(false);
+        setMessage(res.data.message);
+        setAlert(true);
+      } catch (error) {
+        setAlert(true);
+        setMessage(error.response.data.message);
+      }
+    } else if (!add) {
+      try {
+        const res = await axios.post(
+          "//localhost:5000/readinglist/add",
+          dataBook,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              access_token,
+            },
+          }
+        );
+
+        setAdd(true);
+        setMessage(res.data.message);
+        setAlert(true);
+      } catch (error) {
+        setMessage(error.response.data.message);
+        setAlert(true);
+      }
+    }
+  };
+
+  const changeBookmarked = (status) => {
+    if (status) {
+      return (
+        <Button
+          className="d-flex justify-content-between align-items-center px-4 mb-4"
+          style={{
+            width: "100%",
+            height: "50px",
+            backgroundColor: "#00CD52",
+            fontSize: "22px",
+            border: "none",
+          }}
+          onClick={() => onClick()}
+        >
+          <span>
+            <FaBookmark />
+          </span>
+          Saved to reading list
+        </Button>
+      );
+    } else if (!status) {
+      return (
+        <Button
+          className="d-flex justify-content-between align-items-center px-4 mb-4"
+          style={{
+            width: "100%",
+            height: "50px",
+            backgroundColor: "#108ADC",
+            // backgroundColor: "#00CD52",
+            fontSize: "22px",
+            border: "none",
+          }}
+          onClick={() => onClick()}
+        >
+          <span>
+            <FaRegBookmark />
+          </span>
+          Save to reading list
+        </Button>
+      );
+    }
+  };
+
+  const onClose = () => {
+    setAlert(false);
+  };
 
   console.log(Genre);
   return (
     <div>
       <NavbarHome />
+      {MyAlert("Notice", onClose, message, alert)}
       <section className="wrap-book">
         <img src={ContentById.Url} alt="" className="bannerBook" />
         <Container className="mt-5 ContainerBook">
           <Row className="mb-5">
             <Col lg={4} className="d-flex flex-column align-items-center">
               <div className="book__poster-left">
-                <img src={ContentById.Url} alt={ContentById.Poster} className="posterBook mb-4" />
-                <Button
-                  className="d-flex justify-content-between align-items-center px-4 mb-4"
-                  style={{
-                    width: "100%",
-                    height: "50px",
-                    backgroundColor: "#108ADC",
-                    // backgroundColor: "#00CD52",
-                    fontSize: "22px",
-                    border: "none",
-                  }}
-                >
-                  <span>
-                    <FaBookmark />
-                  </span>
-                  Save to reading list
-                </Button>
+                <img
+                  src={ContentById.Url}
+                  alt={ContentById.Poster}
+                  className="posterBook mb-4"
+                />
+                {changeBookmarked(add)}
               </div>
               {/* <Button
                 variant="success"
@@ -86,7 +215,10 @@ export default function Book() {
             <Col lg={8}>
               <div className="book__body-right">
                 <div className=" d-flex align-items-end">
-                  <h1 className="fw-bold" style={{ fontSize: "34px", lineHeight: "50px" }}>
+                  <h1
+                    className="fw-bold"
+                    style={{ fontSize: "34px", lineHeight: "50px" }}
+                  >
                     {ContentById.Title}
                   </h1>
                 </div>
@@ -110,15 +242,22 @@ export default function Book() {
                   <Col lg={6} md={12}>
                     <div className="infobook">
                       {Genre.map((data) => (
-                        <Button variant="success" size="sm" className="me-1 mb-1">
+                        <Button
+                          variant="success"
+                          size="sm"
+                          className="me-1 mb-1"
+                        >
                           {data}
                         </Button>
                       ))}
                     </div>
                   </Col>
                 </Row>
-                <div style={{ maxWidth: "833px", marginTop: '3em' }}>
-                  <pre style={{ fontSize: "18px", whiteSpace: "pre-wrap" }} className="mb-4 pt-2">
+                <div style={{ maxWidth: "833px", marginTop: "3em" }}>
+                  <pre
+                    style={{ fontSize: "18px", whiteSpace: "pre-wrap" }}
+                    className="mb-4 pt-2"
+                  >
                     {ContentById.Stories}
                   </pre>
                 </div>
@@ -126,36 +265,8 @@ export default function Book() {
             </Col>
           </Row>
           <Row className="mb-5">
-            <Col className="landing-ibook__Weekly-heading">
-              <h1 className="fs-3">Top Books This Week</h1>
-            </Col>
             <Col>
-              <SwiperCard>
-                <SwiperSlide className="landing-ibook__swiper-slide">
-                  <BestCard images="https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BestCard images="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/yellow-business-leadership-book-cover-design-template-dce2f5568638ad4643ccb9e725e5d6ff.jpg?ts=1637017516" />
-                </SwiperSlide>
-                <SwiperSlide className="landing-ibook__swiper-slide">
-                  <BestCard images="https://marketplace.canva.com/EAFMf17QgBs/1/0/1003w/canva-green-and-yellow-modern-book-cover-business-Ah-do4Y91lk.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BestCard images="https://www.adobe.com/express/create/cover/media_178ebed46ae02d6f3284c7886e9b28c5bb9046a02.jpeg?width=400&format=jpeg&optimize=medium" />
-                </SwiperSlide>
-                <SwiperSlide className="landing-ibook__swiper-slide">
-                  <BestCard images="https://images-platform.99static.com//6ELqOlDZNAkWKAlKTT3XjDPSZ_c=/fit-in/590x590/projects-files/83/8342/834261/bc96e38c-765d-4031-a33f-b03eb49bca14.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BestCard images="https://dw0i2gv3d32l1.cloudfront.net/uploads/stage/stage_image/154230/optimized_large_thumb_stage.jpg" />
-                </SwiperSlide>
-                <SwiperSlide className="landing-ibook__swiper-slide">
-                  <BestCard images="https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2017/10/the-50-coolest-book-covers-47.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BestCard images="https://images.penguinrandomhouse.com/cover/9780593230985" />
-                </SwiperSlide>
-              </SwiperCard>
+              <Weekly data={dataTopBook.slice(0, 10)} loading={loading} />
             </Col>
           </Row>
         </Container>

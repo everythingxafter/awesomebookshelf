@@ -2,11 +2,8 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const MyAlert = (title, onClose, message, seen, button, to) => {
+const MyAlert = (title, onClose, message, seen, button, to, getDataBook) => {
   const navigate = useNavigate();
-  const handleSuccess = () => {
-    navigate(to);
-  };
 
   if (seen) {
     return (
@@ -17,7 +14,13 @@ const MyAlert = (title, onClose, message, seen, button, to) => {
         <Modal.Body>{message}</Modal.Body>
         {button ? (
           <Modal.Footer>
-            <Button variant="primary" onClick={handleSuccess}>
+            <Button
+              variant="primary"
+              onClick={() => {
+                to ? navigate(to) : getDataBook();
+                onClose();
+              }}
+            >
               Ok
             </Button>
           </Modal.Footer>
