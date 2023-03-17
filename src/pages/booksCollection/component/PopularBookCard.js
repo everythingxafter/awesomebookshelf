@@ -1,14 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Col,
-  Container,
-  Modal,
-  Stack,
-  Row,
-  Figure,
-} from "react-bootstrap";
+import { Button, Col, Modal, Stack, Row, Figure } from "react-bootstrap";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import MyAlert from "../../../component/alert/MyAlert";
@@ -18,7 +10,6 @@ export default function PopularBookCard({
   url,
   title,
   bookData,
-  dataReadingList,
   sinopsis,
   genre,
   date,
@@ -29,6 +20,7 @@ export default function PopularBookCard({
   const [add, setAdd] = useState(false);
   const [message, setMessage] = useState("");
   const [alert, setAlert] = useState(false);
+  const [dataReadingList, setDataAdd] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const genreList = genre.split(", ");
 
@@ -42,24 +34,41 @@ export default function PopularBookCard({
   };
 
   useEffect(() => {
-    Array.from(dataReadingList).forEach((dataReading) => {
-      if (dataReading?.BookId === bookData?.id) {
-        if (!add) {
-          setAdd(true);
-        }
+    const config = {
+      headers: {
+        access_token,
+      },
+    };
+
+    const getAdd = async () => {
+      try {
+        const res = await axios.get("//localhost:5000/readinglist", config);
+        setDataAdd(res.data);
+      } catch (error) {
+        console.log(error);
       }
-    });
-  }, [add, bookData, dataReadingList]);
+    };
+
+    getAdd();
+  }, [access_token]);
+
+  Array.from(dataReadingList).forEach((dataReading) => {
+    if (dataReading?.BookId === bookData?.id) {
+      if (!add) {
+        setAdd(true);
+      }
+    }
+  });
 
   const onClick = async () => {
     const dataBook = new FormData();
     dataBook.append("id", bookData?.id);
     dataBook.append("title", bookData?.Title);
     dataBook.append("url", bookData?.Url);
-    dataBook.append("sinopsis", bookData?.Sinopsis);
-    dataBook.append("genre", bookData?.Genres);
-    dataBook.append("date", bookData?.ReleaseDate);
-    dataBook.append("username", bookData?.Username);
+    //dataBook.append("sinopsis", bookData?.Sinopsis);
+    // dataBook.append("genre", bookData?.Genres);
+    //dataBook.append("date", bookData?.ReleaseDate);
+    //dataBook.append("username", bookData?.Username);
     setShowModal(true);
 
     if (add) {
@@ -146,9 +155,15 @@ export default function PopularBookCard({
                     "{sinopsis}""
                   </span>
                   <Row>
-                    <Col>
+                    <Col className="infobook">
                       {genreList.slice(0, 3).map((data) => (
-                        <Button>{data}</Button>
+                        <Button
+                          variant="success"
+                          size="sm"
+                          className="me-1 mb-1"
+                        >
+                          {data}
+                        </Button>
                       ))}
                     </Col>
                     <Stack gap={3}>
@@ -164,7 +179,11 @@ export default function PopularBookCard({
                       </Row>
                       <Row>
                         <Col>
-                          <Button onClick={() => navigate(`/book/${id}`)}>
+                          <Button
+                            onClick={() => navigate(`/book/${id}`)}
+                            size="sm"
+                            className="me-1 mb-1"
+                          >
                             Read Now
                           </Button>
                         </Col>
@@ -191,8 +210,9 @@ export default function PopularBookCard({
         </Row>
       </Modal>
 
-      <div onClick={() => setShowModal(true)}>
+      <div>
         <div
+          onClick={() => setShowModal(true)}
           style={{
             width: "250px",
             height: "350px",
@@ -202,19 +222,7 @@ export default function PopularBookCard({
             backgroundSize: "cover",
             scrollSnapAlign: "start",
           }}
-        >
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "row-reverse",
-            }}
-          >
-            <Button variant="danger" onClick={() => onClick()}>
-              {changeBookmarked(add)}
-            </Button>
-          </div>
-        </div>
+        ></div>
 
         <Row
           style={{

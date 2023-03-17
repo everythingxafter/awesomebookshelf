@@ -4,9 +4,7 @@ import PopularBookCard from "./PopularBookCard";
 import "./PopularBook.css";
 import Loading from "../../../component/loading/Loading";
 
-export default function PopularBook({ data, dataReadingList, loading }) {
-  console.log(data);
-
+export default function PopularBook({ data, loading }) {
   return (
     <div>
       <Container
@@ -31,7 +29,6 @@ export default function PopularBook({ data, dataReadingList, loading }) {
                         title={value?.Title}
                         sinopsis={value?.Sinopsis}
                         bookData={value}
-                        dataReadingList={dataReadingList}
                         date={value?.ReleaseDate}
                         username={value?.Username}
                         genre={value?.Genres}

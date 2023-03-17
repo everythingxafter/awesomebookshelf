@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import MyAlert from "../../component/alert/MyAlert";
 import "./UpdateBook.css";
 
 export default function UpdateBook() {
   const access_token = localStorage.getItem("access_token");
-  const navigate = useNavigate();
   const [preliminaryData, setPreliminaryData] = useState({});
   const { id } = useParams();
   const [alert, setAlert] = useState(false);
@@ -68,12 +67,15 @@ export default function UpdateBook() {
     e.preventDefault();
 
     try {
-      const res = await axios.patch("//localhost:5000/content/update/" + id, data, config);
+      const res = await axios.patch(
+        "//localhost:5000/content/update/" + id,
+        data,
+        config
+      );
 
       const message = res.data.message;
       setAlert(true);
       setMessage(message);
-      navigate("/dashboard");
     } catch (error) {
       setAlert(true);
       console.log(error);
@@ -93,13 +95,23 @@ export default function UpdateBook() {
 
   return (
     <div className="updateBook-page">
-      {MyAlert("Notice", onClose, message ? message : "Please try again :)", alert)}
+      {MyAlert(
+        "Notice",
+        onClose,
+        message ? message : "Please try again :)",
+        alert,
+        true,
+        "/dashboard"
+      )}
       <div>
         <h1 className="updateBook-text">Update Data</h1>
 
         <Form className="updateBook-container" onSubmit={(e) => submitBook(e)}>
           <div className="updateBook-containerColumn updateBook-upper">
-            <Form.Group className="mb-3 updateBook-row" controlId="exampleForm.ControlInput1">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="updateBook-label" for="bookName">
                 Book Name
               </Form.Label>
@@ -111,7 +123,10 @@ export default function UpdateBook() {
                 onChange={(e) => setBookName(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3 updateBook-row" controlId="exampleForm.ControlInput1">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="updateBook-label" for="genre">
                 Genre
               </Form.Label>
@@ -123,8 +138,14 @@ export default function UpdateBook() {
                 onChange={(e) => setGenre(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3 updateBook-row" controlId="exampleForm.ControlTextarea1">
-              <Form.Label className="updateBook-label updateBook-center" for="sinopsis">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label
+                className="updateBook-label updateBook-center"
+                for="sinopsis"
+              >
                 Sinopsis
               </Form.Label>
               <Form.Control
@@ -156,10 +177,15 @@ export default function UpdateBook() {
               />
             </Form.Group>
             <div className="updateBook-containerImage">
-              {preview ? <img className="updateBook-image" src={preview} alt="Preview" /> : null}
+              {preview ? (
+                <img className="updateBook-image" src={preview} alt="Preview" />
+              ) : null}
             </div>
 
-            <Form.Group className="mb-3 updateBook-row" controlId="exampleForm.ControlInput1">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlInput1"
+            >
               <Form.Label className="updateBook-label" for="bookRelease">
                 Book Release
               </Form.Label>
@@ -171,7 +197,10 @@ export default function UpdateBook() {
                 onChange={(e) => setBookRelease(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3 updateBook-row" controlId="exampleForm.ControlTextarea1">
+            <Form.Group
+              className="mb-3 updateBook-row"
+              controlId="exampleForm.ControlTextarea1"
+            >
               <Form.Label className="updateBook-label" for="stories">
                 Stories
               </Form.Label>
@@ -185,7 +214,11 @@ export default function UpdateBook() {
               />
             </Form.Group>
             <div className="updateBook-buttonContainer">
-              <Button className="updateBook-button" variant="primary" type="submit">
+              <Button
+                className="updateBook-button"
+                variant="primary"
+                type="submit"
+              >
                 Update
               </Button>
             </div>
