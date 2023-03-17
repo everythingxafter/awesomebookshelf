@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import MyAlert from "../../component/alert/MyAlert";
 import Loading from "../../component/loading/Loading";
@@ -16,6 +16,8 @@ export default function Dashboard() {
   const [alert, setAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [deleteTarget, setDeleteTarget] = useState(null);
   const navigate = useNavigate();
   const dataBook = [];
 
@@ -64,15 +66,41 @@ export default function Dashboard() {
       navigate("/dashboard");
       setAlert(true);
       setLoading(false);
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
+      getUserBookData()
     } catch (error) {
       setAlert(true);
       console.log(error);
       setLoading(false);
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
+      getUserBookData()
     }
   };
 
   const onClose = () => {
     setAlert(false);
+  };
+
+  const handleDeleteConfirm = () => {
+    if (deleteTarget) {
+      onDelete(deleteTarget.id);
+    }
+    setDeleteTarget(null);
+    setShowModal(false);
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteTarget(null);
+    setShowModal(false);
+  };
+
+  const handleDeleteOpenModal = (id) => {
+    setDeleteTarget({ id });
+    setShowModal(true);
   };
 
   return (
@@ -109,13 +137,28 @@ export default function Dashboard() {
                   updateAt={data?.updatedAt}
                   url={data?.Url}
                   onUpdate={() => onUpdate(data?.id)}
-                  onDelete={() => onDelete(data?.id)}
-                />
+                  onDelete={() => handleDeleteOpenModal(data?.id)} />
               );
             })
           ) : (
             <Loading seen={loading} />
           )}
+          <Modal show={showModal} onHide={handleDeleteCancel}>
+            <Modal.Header closeButton>
+              <Modal.Title>Confirmation</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Are you sure you want to delete this book?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleDeleteCancel}>
+                No
+              </Button>
+              <Button variant="danger" onClick={handleDeleteConfirm}>
+                Yes
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </Container>
       </div>
     </div>
