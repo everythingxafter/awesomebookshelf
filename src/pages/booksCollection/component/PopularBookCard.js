@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Modal, Stack, Row, Figure } from "react-bootstrap";
+import { Button, Col, Modal, Stack, Row, Image, Container } from "react-bootstrap";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import MyAlert from "../../../component/alert/MyAlert";
@@ -126,57 +126,81 @@ export default function PopularBookCard({
     <div>
       {MyAlert("Notice", onClose, message, alert)}
       <Modal
+        size="lg"
         show={showModal}
         onHide={() => setShowModal(false)}
-        style={{ color: "#fff" }}
-        className="container-modal"
       >
         <Row>
           <Col>
-            <Figure>
-              <Figure.Image height={180} src={url} />
-            </Figure>
+            <Container>
+              <div style={{
+                margin: "1em",
+                display: "flex",
+                justifyContent: "center",
+              }}>
+                <Image src={url} alt={url}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
+              </div>
+            </Container>
           </Col>
           <Col>
-            <Stack>
-              <Modal.Header closeButton>
-                <Modal.Title>{title}</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <Stack>
-                  <span
-                    style={{
-                      height: 100,
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "wrap",
-                    }}
-                  >
-                    "{sinopsis}""
-                  </span>
+            <div>
+              <Stack>
+                <Modal.Header closeButton>
+                  <Modal.Title>{title}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Stack>
+                    <div
+                      style={{
+                        height: '20vh',
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "wrap",
+                        marginBottom: "1em"
+                      }}
+                    >
+                      <p>
+                        "{sinopsis}"
+                      </p>
+                    </div>
+                  </Stack>
                   <Row>
-                    <Col className="infobook">
-                      {genreList.slice(0, 3).map((data) => (
-                        <Button
-                          variant="success"
-                          size="sm"
-                          className="me-1 mb-1"
-                        >
-                          {data}
-                        </Button>
-                      ))}
+                    <Col>
+                      <div style={{
+                        marginBottom: '1em'
+                      }}>
+                        {genreList.slice(0, 3).map((data) => (
+                          <Button
+                            variant="success"
+                            size="sm"
+                            className="me-1 mb-1"
+                          >
+                            {data}
+                          </Button>
+                        ))}
+                      </div>
                     </Col>
                     <Stack gap={3}>
-                      <Row>
+                      <div style={{
+                        marginBottom: '1em'
+                      }}>
                         <Row>
-                          <Col>Published On</Col>
-                          <Col>Author</Col>
+                          <Row>
+                            <Col>Published On</Col>
+                            <Col>Author</Col>
+                          </Row>
+                          <Row>
+                            <Col>{date}</Col>
+                            <Col>{username}</Col>
+                          </Row>
                         </Row>
-                        <Row>
-                          <Col>{date}</Col>
-                          <Col>{username}</Col>
-                        </Row>
-                      </Row>
+                      </div>
                       <Row>
                         <Col>
                           <Button
@@ -203,9 +227,9 @@ export default function PopularBookCard({
                       </Row>
                     </Stack>
                   </Row>
-                </Stack>
-              </Modal.Body>
-            </Stack>
+                </Modal.Body>
+              </Stack>
+            </div>
           </Col>
         </Row>
       </Modal>
