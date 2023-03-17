@@ -1,0 +1,57 @@
+.landing-ibook__error {
+    padding: 50px 0;
+  background: linear-gradient(0deg, #15202B, #15202B);
+  }
+  
+  .landing-ibook_error_image {
+    width: 100%;
+  }
+  
+  .landing-ibook_error_image-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .landing-ibook_error_content-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .landing-ibook_error_heading {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 96px;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  
+  .landing-ibook_error_text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: right;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  
+  .landing-ibook_error_button {
+    background: #108ADC;
+    padding : 17px 15px;
+    border-radius: 10px;
+  }
+  
+  .landing-ibook_error_link {
+    display: block;
+    text-align: center;
+  }
+  
+  @media (max-width: 767px) {
+    .landing-ibook_error_image-col,
+    .landing-ibook_error_content-col {
+      order: 1;
+    }
+  }
