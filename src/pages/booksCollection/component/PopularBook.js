@@ -4,7 +4,7 @@ import PopularBookCard from "./PopularBookCard";
 import "./PopularBook.css";
 import Loading from "../../../component/loading/Loading";
 
-export default function PopularBook({ data, dataReadingList, loading }) {
+export default function PopularBook({ data, loading }) {
   return (
     <div>
       <Container
@@ -28,7 +28,6 @@ export default function PopularBook({ data, dataReadingList, loading }) {
                         url={value?.Url}
                         title={value?.Title}
                         bookData={value}
-                        dataReadingList={dataReadingList}
                       />
                     );
                   })

@@ -1,23 +1,23 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import MyAlert from "../../component/alert/MyAlert";
+import Loading from "../../component/loading/Loading";
 import "./createBook.css";
 
 export default function CreateBook() {
   const access_token = localStorage.getItem("access_token");
-  const navigate = useNavigate()
   const [alert, setAlert] = useState(false);
   const [bookName, setBookName] = useState("");
   const [genre, setGenre] = useState("");
   const [file, setFile] = useState({});
   const [fileName, setFileName] = useState("");
   const [sinopsis, setSinopsis] = useState("");
-  const [bookRelease, setBookRelease] = useState("");
+  const [bookRelease, setBookRelease] = useState(new Date());
   const [stories, setStories] = useState("");
   const [message, setMessage] = useState("");
   const [preview, setPreview] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const dataBook = new FormData();
   dataBook.append("title", bookName);
@@ -35,6 +35,7 @@ export default function CreateBook() {
   };
   console.log(dataBook);
   const sendData = async (data) => {
+    setLoading(true);
     try {
       const res = await axios.post(
         "//localhost:5000/content/create",
@@ -45,9 +46,10 @@ export default function CreateBook() {
       const message = res.data.message;
       setAlert(true);
       setMessage(message);
-      navigate("/dashboard")
+      setLoading(false);
     } catch (error) {
       setAlert(true);
+      setLoading(false);
       console.log(error);
     }
   };
@@ -67,7 +69,9 @@ export default function CreateBook() {
         "Notice",
         onClose,
         message ? message : "Please try again :)",
-        alert
+        alert,
+        true,
+        "/dashboard"
       )}
       <div>
         <h1 className="createBook-text">Create data</h1>
@@ -150,16 +154,13 @@ export default function CreateBook() {
               ) : null}
             </div>
 
-            <Form.Group
-              className="mb-3 createBook-row"
-              controlId="exampleForm.ControlInput1"
-            >
+            <Form.Group className="mb-3 createBook-row">
               <Form.Label className="createBook-label" for="bookRelease">
                 Book Release
               </Form.Label>
               <Form.Control
                 id="bookRelease"
-                type="text"
+                type="date"
                 placeholder="Write your book is released"
                 className="createBook-input"
                 value={bookRelease}
@@ -184,13 +185,17 @@ export default function CreateBook() {
               />
             </Form.Group>
             <div className="createBook-buttonContainer">
-              <Button
-                className="createBook-button"
-                variant="primary"
-                type="submit"
-              >
-                Create
-              </Button>
+              {loading ? (
+                <Loading seen={loading} />
+              ) : (
+                <Button
+                  className="createBook-button"
+                  variant="primary"
+                  type="submit"
+                >
+                  Create
+                </Button>
+              )}
             </div>
           </div>
         </Form>

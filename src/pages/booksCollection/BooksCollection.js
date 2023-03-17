@@ -8,9 +8,7 @@ import axios from "axios";
 
 export default function BooksCollection() {
   const [data, setData] = useState([]);
-  const [dataAdd, setDataAdd] = useState({});
   const [loading, setLoading] = useState(false);
-  const access_token = localStorage.getItem("access_token");
   const dataPopular = data?.sort((a, b) => {
     return b.PageViews - a.PageViews;
   });
@@ -30,24 +28,8 @@ export default function BooksCollection() {
   };
 
   useEffect(() => {
-    const config = {
-      headers: {
-        access_token,
-      },
-    };
-
-    const getAdd = async () => {
-      try {
-        const res = await axios.get("//localhost:5000/readinglist", config);
-        setDataAdd(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getData();
-    getAdd();
-  }, [access_token]);
+    getData()
+  }, [])
 
   return (
     <div style={{ display: "flex" }}>
@@ -57,7 +39,6 @@ export default function BooksCollection() {
         <CarouselCollection data={dataCarousel} loading={loading} />
         <PopularBook
           data={dataPopular}
-          dataReadingList={dataAdd}
           loading={loading}
         />
       </div>

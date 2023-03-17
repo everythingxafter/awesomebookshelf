@@ -1,7 +1,13 @@
 import React from "react";
-import { Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-const MyAlert = (title, onClose, message, seen) => {
+const MyAlert = (title, onClose, message, seen, button, to) => {
+  const navigate = useNavigate();
+  const handleSuccess = () => {
+    navigate(to);
+  };
+
   if (seen) {
     return (
       <Modal show={seen} onHide={onClose} backdrop="static" keyboard={false}>
@@ -9,6 +15,13 @@ const MyAlert = (title, onClose, message, seen) => {
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{message}</Modal.Body>
+        {button ? (
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleSuccess}>
+              Ok
+            </Button>
+          </Modal.Footer>
+        ) : null}
       </Modal>
     );
   }

@@ -8,12 +8,12 @@ export default function PopularBookCard({
   url,
   title,
   bookData,
-  dataReadingList,
 }) {
   const access_token = localStorage.getItem("access_token");
   const [add, setAdd] = useState(false);
   const [message, setMessage] = useState("");
   const [alert, setAlert] = useState(false);
+  const [dataReadingList, setDataAdd] = useState([]);
   const configDelete = {
     headers: {
       access_token,
@@ -24,14 +24,31 @@ export default function PopularBookCard({
   };
 
   useEffect(() => {
-    Array.from(dataReadingList).forEach((dataReading) => {
-      if (dataReading?.BookId === bookData?.id) {
-        if (!add) {
-          setAdd(true);
-        }
+    const config = {
+      headers: {
+        access_token,
+      },
+    };
+
+    const getAdd = async () => {
+      try {
+        const res = await axios.get("//localhost:5000/readinglist", config);
+        setDataAdd(res.data);
+      } catch (error) {
+        console.log(error);
       }
-    });
-  }, [add, bookData, dataReadingList]);
+    };
+
+    getAdd();
+  }, [access_token]);
+
+  Array.from(dataReadingList).forEach((dataReading) => {
+    if (dataReading?.BookId === bookData?.id) {
+      if (!add) {
+        setAdd(true);
+      }
+    }
+  });
 
   const onClick = async () => {
     const dataBook = new FormData();
