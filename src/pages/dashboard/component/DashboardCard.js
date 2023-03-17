@@ -15,11 +15,11 @@ export default function DashboardCard({
 }) {
   const genres = genre.split(",");
   const date = (date) => {
-      const theDate = new Date(date).toString().split(" ")
+    const theDate = new Date(date).toString().split(" ")
 
-      return `${theDate[2]} ${theDate[1]} ${theDate[3]}`
-    }
-    
+    return `${theDate[2]} ${theDate[1]} ${theDate[3]}`
+  }
+
   return (
     <div className="dashboard-card">
       <div className="dashboard-card__container-card">
@@ -30,7 +30,7 @@ export default function DashboardCard({
           <Container>
             <h3>{title}</h3>
             <div className="dashboard-card__likes">
-              <p>Likes</p>
+              <p>Page Visitor</p>
               <p>{pageView}</p>
             </div>
 
