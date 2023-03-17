@@ -155,9 +155,15 @@ export default function PopularBookCard({
                     "{sinopsis}""
                   </span>
                   <Row>
-                    <Col>
+                    <Col className="infobook">
                       {genreList.slice(0, 3).map((data) => (
-                        <Button>{data}</Button>
+                        <Button
+                          variant="success"
+                          size="sm"
+                          className="me-1 mb-1"
+                        >
+                          {data}
+                        </Button>
                       ))}
                     </Col>
                     <Stack gap={3}>
@@ -173,7 +179,11 @@ export default function PopularBookCard({
                       </Row>
                       <Row>
                         <Col>
-                          <Button onClick={() => navigate(`/book/${id}`)}>
+                          <Button
+                            onClick={() => navigate(`/book/${id}`)}
+                            size="sm"
+                            className="me-1 mb-1"
+                          >
                             Read Now
                           </Button>
                         </Col>
