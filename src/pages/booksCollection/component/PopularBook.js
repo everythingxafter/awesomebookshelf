@@ -5,6 +5,8 @@ import "./PopularBook.css";
 import Loading from "../../../component/loading/Loading";
 
 export default function PopularBook({ data, dataReadingList, loading }) {
+  console.log(data);
+
   return (
     <div>
       <Container
@@ -19,7 +21,7 @@ export default function PopularBook({ data, dataReadingList, loading }) {
       <Container>
         <Row>
           <Col>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <div className="popular-book-container">
                 {data.length > 0 ? (
                   data?.map((value) => {
@@ -27,8 +29,13 @@ export default function PopularBook({ data, dataReadingList, loading }) {
                       <PopularBookCard
                         url={value?.Url}
                         title={value?.Title}
+                        sinopsis={value?.Sinopsis}
                         bookData={value}
                         dataReadingList={dataReadingList}
+                        date={value?.ReleaseDate}
+                        username={value?.Username}
+                        genre={value?.Genres}
+                        id={value?.id}
                       />
                     );
                   })
