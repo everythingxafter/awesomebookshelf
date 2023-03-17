@@ -9,6 +9,7 @@ import memberYandi from './assets/member-yandi.jpg'
 import memberAhmad from './assets/member-ahmad.jpeg'
 import memberNahrul from './assets/member-nahrul.jpg'
 import memberIrvan from './assets/member-irvan.jpeg'
+import memberSuryati from './assets/member-suryati.jpeg'
 
 export default function AboutUs() {
   return (
@@ -172,15 +173,15 @@ export default function AboutUs() {
               <div className="about-us__member">
                 <div className="about-us__member-card">
                   <div className="about-us__member-image">
-                    <Image src={memberAhmad} alt="member-ahmad" />
+                    <Image src={memberSuryati} alt="member-suryati" />
                   </div>
                   <div className="about-us__member-name">
-                    <h4>Ahmad Sibly, S.Kom</h4>
+                    <h4>Suryati</h4>
                     <p>Member of Nerokie</p>
                   </div>
                 </div>
                 <div className="about-us__member-info">
-                  <p>I am a recent graduate in Computer Engineering with a strong interest in Frontend Web Development. I have a fundamental knowledge of HTML, CSS, and JavaScript, and experience in building web applications using ReactJS. I possess the ability to work well in a team, as well as being self-motivated and able to work independently. I am always enthusiastic about self-development and learning new technologies. I believe that with a positive attitude and commitment, I can make a meaningful contribution to my team and organization. I also have excellent interpersonal skills, which enable me to interact effectively with colleagues and clients. I am highly motivated to develop my career in Frontend Web Development and hope to make a positive impact in the technology industry.</p>
+                  <p>About me Hallo nama saya suryati, dan saya fresh graduate di salah satu universitas dan pendidikan terakhir saya adalah Sastra 1 dan saya suka dengan coding ini sejak awal perkuliahan dan mengemban jurusan sistem informasi untuk kelebihan saya saat ini dalam bahasa pemrograman yaitu html dan css</p>
                 </div>
               </div>
             </Col>
